@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0CBF84062680C48C008D5A40 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBF84052680C48C008D5A40 /* SearchBar.swift */; };
 		0CC5077B267E3D4E0004040C /* SharedWorkspace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC50779267E3D4E0004040C /* SharedWorkspace.swift */; };
 		0CC5077C267E3D4E0004040C /* PersonalWorkspace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC5077A267E3D4E0004040C /* PersonalWorkspace.swift */; };
 		0CC50783267E3D560004040C /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC5077F267E3D560004040C /* HomeView.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0CBF84052680C48C008D5A40 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		0CC50779267E3D4E0004040C /* SharedWorkspace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedWorkspace.swift; sourceTree = "<group>"; };
 		0CC5077A267E3D4E0004040C /* PersonalWorkspace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalWorkspace.swift; sourceTree = "<group>"; };
 		0CC5077F267E3D560004040C /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -44,6 +46,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0CBF84042680C47D008D5A40 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				0CBF84052680C48C008D5A40 /* SearchBar.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		0CC50778267E3D4E0004040C /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -56,6 +66,7 @@
 		0CC5077E267E3D560004040C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				0CBF84042680C47D008D5A40 /* Components */,
 				0CC5077F267E3D560004040C /* HomeView.swift */,
 				0CC50780267E3D560004040C /* SharedWorkspaceView.swift */,
 				0CC50781267E3D560004040C /* ContentView.swift */,
@@ -176,6 +187,7 @@
 				0CC50785267E3D560004040C /* ContentView.swift in Sources */,
 				0CC50786267E3D560004040C /* PersonalWorkspaceView.swift in Sources */,
 				0CC50783267E3D560004040C /* HomeView.swift in Sources */,
+				0CBF84062680C48C008D5A40 /* SearchBar.swift in Sources */,
 				5E805AF4267CEB4A00B39A6E /* LaserAppApp.swift in Sources */,
 				0CC50784267E3D560004040C /* SharedWorkspaceView.swift in Sources */,
 			);
