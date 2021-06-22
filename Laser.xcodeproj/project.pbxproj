@@ -196,6 +196,7 @@
 				0CC50783267E3D560004040C /* HomeView.swift in Sources */,
 				0CBF84062680C48C008D5A40 /* SearchBar.swift in Sources */,
 				5E805AF4267CEB4A00B39A6E /* LaserAppApp.swift in Sources */,
+				4B2AEB6D26822257007EF3CF /* EmbeddedVideo.swift in Sources */,
 				0CBF840B268223A5008D5A40 /* Kanban.swift in Sources */,
 				0CC50784267E3D560004040C /* SharedWorkspaceView.swift in Sources */,
 			);
