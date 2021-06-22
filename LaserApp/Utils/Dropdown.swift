@@ -17,14 +17,21 @@ struct Dropdown: View {
     var body: some View {
         Group {
             Menu {
-                ForEach(options, id: \.self) { item in
-                    Button(item, action: {
-                        selected = item
+                ForEach(options, id: \.self) { option in
+                    Button(option, action: {
+                        if selected == option {
+                            selected = ""
+                            onSelectionChange(selected)
+                            return
+                        }
+                        
+                        selected = option
+                        onSelectionChange(selected)
                     })
                 }
             } label: {
                 Text(selected != "" ? selected : placeholder)
-                    .foregroundColor(.gray)
+                    .foregroundColor(selected != "" ? .white : .gray)
                     .font(.system(size: 17))
             }
             .menuStyle(BorderlessButtonMenuStyle())
