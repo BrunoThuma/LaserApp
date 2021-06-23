@@ -13,16 +13,15 @@ struct KanbanItemData: Identifiable {
     let description: String
 }
 
-var kanbanCardColors = [
-    Color("turquoise"),
-    Color("deepPurple"),
-    Color("pink"),
-    Color("purple"),
-//    Color("yellow"),
-]
-
 struct KanbanCard: View {
     var data: KanbanItemData
+    
+    var kanbanCardColors = [
+        Color("turquoise"),
+        Color("deepPurple"),
+        Color("pink"),
+        Color("purple"),
+    ]
     
     var body: some View {
         Group {
