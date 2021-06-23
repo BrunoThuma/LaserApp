@@ -15,7 +15,7 @@ struct NotesView: View {
     var body: some View {
         TextField (text, text: $text)
             .frame(width: 100, height: 100)
-            .background(Color(.systemYellow))
+            .background(Color(.systemGray))
             .position(position)
             .gesture(
                 DragGesture()
