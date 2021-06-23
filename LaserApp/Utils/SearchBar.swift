@@ -37,7 +37,7 @@ struct SearchBar: View {
                 .onChange(of: searchText) { newValue in
                     onTextChange(newValue)
                 }
-                .textFieldStyle(.plain)
+                .textFieldStyle(PlainTextFieldStyle())
                 .font(.system(size: 17))
         }
         .frame(minWidth: 0, maxWidth: 343, minHeight: 0, maxHeight: 36, alignment: .leading)
