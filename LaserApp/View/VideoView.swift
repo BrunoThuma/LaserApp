@@ -9,42 +9,64 @@ import SwiftUI
 
 struct VideoView: View {
     @State private var videoUrl: String = ""
-    @State private var position: CGPoint = CGPoint(x:200, y:200)
+    @State private var position: CGPoint = CGPoint(x:400, y:400)
     
     var body: some View {
         VStack{
-        
-            if videoUrl.contains("https://www.youtube.com/watch?v=") || videoUrl.contains("https://youtu.be/"){
-                EmbeddedVideoView(videoString: videoUrl)
-            } else {
-                VStack{
-                    Spacer()
-                    VStack(alignment: .center){
-                        Image(systemName: "play.rectangle.fill")
-                            .font(.system(size: 60))
-                    }.padding(30)
-                    
-                    VStack(alignment:.center) {
+            HStack{
+                Spacer()
+                Image(systemName: "ellipsis")
+                    .foregroundColor(.white)
+                    .font(.system(size: 15))
+                    .padding(.top,20)
+                    .padding(.trailing,20)
+            }
+            
+            Spacer()
+            
+            VStack{
+                if videoUrl.contains("https://www.youtube.com/watch?v=") || videoUrl.contains("https://youtu.be/") {
+                    EmbeddedVideoView(videoString: videoUrl)
+                } else {
+                    HStack{
+                        Spacer()
                         
-                        HStack{
-                            Image(systemName: "link")
-                                .font(Font.body.weight(.heavy))
-                            TextField("Cole o link do vídeo aqui", text: $videoUrl)
-                                .textFieldStyle(PlainTextFieldStyle())
-                                .fixedSize()
+                        VStack{
+                            Spacer()
+                            VStack(alignment: .center){
+                                Image(systemName: "play.rectangle.fill")
+                                    .font(.system(size: 60))
+                            }.padding(30)
+                            
+                            VStack(alignment:.center) {
+                                HStack{
+                                    Image(systemName: "link")
+                                        .font(Font.body.weight(.heavy))
+                                    TextField("Cole o link do vídeo aqui", text: $videoUrl)
+                                        .textFieldStyle(PlainTextFieldStyle())
+                                        .fixedSize()
+                                }
+                            }
+                            .padding()
+                            .background(Color.gray.opacity(0.10))
+                            .cornerRadius(10)
+                            Spacer()
                         }
+                        
+                        Spacer()
                     }
-                    .padding()
-                    .background(Color.gray.opacity(0.10))
-                    .cornerRadius(10)
-                    
-                    Spacer()
                 }
             }
+            .background(Color.black)
+            .frame(width: 480, height: 270)
+            //.cornerRadius(20)
+            .padding(.bottom, 20)
+            .padding(.trailing, 20)
+            .padding(.leading, 20)
         }
-        .frame(maxWidth: 480, maxHeight: 270)
-        .background(Color.black.opacity(0.5))
-        .cornerRadius(15)
+        .frame(width: 510, height: 320)
+        .background(Color("pink"))
+        .cornerRadius(20)
         .position(position)
         .gesture(
             DragGesture()
