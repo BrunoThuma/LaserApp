@@ -18,8 +18,8 @@
 		0CC50784267E3D560004040C /* SharedWorkspaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC50780267E3D560004040C /* SharedWorkspaceView.swift */; };
 		0CC50785267E3D560004040C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC50781267E3D560004040C /* ContentView.swift */; };
 		0CC50786267E3D560004040C /* PersonalWorkspaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC50782267E3D560004040C /* PersonalWorkspaceView.swift */; };
-		4B54B7AB2683626600D4D2C0 /* EmbeddedVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B54B7A92683626600D4D2C0 /* EmbeddedVideoView.swift */; };
-		4B54B7AC2683626600D4D2C0 /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B54B7AA2683626600D4D2C0 /* VideoView.swift */; };
+		4B54B7AB2683626600D4D2C0 /* EmbeddedVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B54B7A92683626600D4D2C0 /* EmbeddedVideo.swift */; };
+		4B54B7AC2683626600D4D2C0 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B54B7AA2683626600D4D2C0 /* Video.swift */; };
 		4B54B7AE2683627B00D4D2C0 /* EmbeddedVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B54B7AD2683627B00D4D2C0 /* EmbeddedVideo.swift */; };
 		5E805AF4267CEB4A00B39A6E /* LaserAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E805AF3267CEB4A00B39A6E /* LaserAppApp.swift */; };
 		5E805AF8267CEB4B00B39A6E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E805AF7267CEB4B00B39A6E /* Assets.xcassets */; };
@@ -40,8 +40,8 @@
 		0CC50780267E3D560004040C /* SharedWorkspaceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedWorkspaceView.swift; sourceTree = "<group>"; };
 		0CC50781267E3D560004040C /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		0CC50782267E3D560004040C /* PersonalWorkspaceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalWorkspaceView.swift; sourceTree = "<group>"; };
-		4B54B7A92683626600D4D2C0 /* EmbeddedVideoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmbeddedVideoView.swift; sourceTree = "<group>"; };
-		4B54B7AA2683626600D4D2C0 /* VideoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoView.swift; sourceTree = "<group>"; };
+		4B54B7A92683626600D4D2C0 /* EmbeddedVideo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmbeddedVideo.swift; sourceTree = "<group>"; };
+		4B54B7AA2683626600D4D2C0 /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		4B54B7AD2683627B00D4D2C0 /* EmbeddedVideo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EmbeddedVideo.swift; path = LaserApp/Model/EmbeddedVideo.swift; sourceTree = SOURCE_ROOT; };
 		5E805AF0267CEB4A00B39A6E /* Laser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Laser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E805AF3267CEB4A00B39A6E /* LaserAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaserAppApp.swift; sourceTree = "<group>"; };
@@ -67,9 +67,11 @@
 		0CBF8409268201A3008D5A40 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				4B54B7A92683626600D4D2C0 /* EmbeddedVideo.swift */,
 				0CBF84052680C48C008D5A40 /* SearchBar.swift */,
 				0CBF84072680CEDB008D5A40 /* Dropdown.swift */,
 				5EDDE0E9268217FB00722604 /* PostIt.swift */,
+				4B54B7AA2683626600D4D2C0 /* Video.swift */,
 				5EDDE0EB2682298700722604 /* Notes.swift */,
 				0CBF840A268223A5008D5A40 /* Kanban.swift */,
 				0C2DBF6826837413003C0BB1 /* PersonalWorkspaceCard.swift */,
@@ -91,8 +93,6 @@
 		0CC5077E267E3D560004040C /* View */ = {
 			isa = PBXGroup;
 			children = (
-				4B54B7A92683626600D4D2C0 /* EmbeddedVideoView.swift */,
-				4B54B7AA2683626600D4D2C0 /* VideoView.swift */,
 				0CC5077F267E3D560004040C /* HomeView.swift */,
 				0CC50780267E3D560004040C /* SharedWorkspaceView.swift */,
 				0CC50781267E3D560004040C /* ContentView.swift */,
@@ -209,7 +209,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4B54B7AC2683626600D4D2C0 /* VideoView.swift in Sources */,
+				4B54B7AC2683626600D4D2C0 /* Video.swift in Sources */,
 				0CC5077B267E3D4E0004040C /* SharedWorkspace.swift in Sources */,
 				0CBF84082680CEDB008D5A40 /* Dropdown.swift in Sources */,
 				0C2DBF6926837413003C0BB1 /* PersonalWorkspaceCard.swift in Sources */,
@@ -220,7 +220,7 @@
 				5EDDE0EC2682298700722604 /* Notes.swift in Sources */,
 				0CC50783267E3D560004040C /* HomeView.swift in Sources */,
 				4B54B7AE2683627B00D4D2C0 /* EmbeddedVideo.swift in Sources */,
-				4B54B7AB2683626600D4D2C0 /* EmbeddedVideoView.swift in Sources */,
+				4B54B7AB2683626600D4D2C0 /* EmbeddedVideo.swift in Sources */,
 				0C2DBF6C26837571003C0BB1 /* Hashtag.swift in Sources */,
 				0CBF84062680C48C008D5A40 /* SearchBar.swift in Sources */,
 				5E805AF4267CEB4A00B39A6E /* LaserAppApp.swift in Sources */,
