@@ -8,32 +8,6 @@
 
 import SwiftUI
 
-let kanbanBacklogSampleData = KanbanPartData(title: "Backlog", items: [
-    KanbanItemData(name: "Simulação analógica", description: "Simular o circuito X"),
-    KanbanItemData(name: "Simulação analógica", description: "Simular o circuito X"),
-    KanbanItemData(name: "Simulação analógica", description: "Simular o circuito X"),
-    KanbanItemData(name: "Simulação analógica", description: "Simular o circuito X"),
-]);
-
-let kanbanTodoSampleData = KanbanPartData(title: "To do", items: [
-    KanbanItemData(name: "Simulação analógica", description: "Simular o circuito X"),
-    KanbanItemData(name: "Simulação analógica", description: "Simular o circuito X"),
-    KanbanItemData(name: "Simulação analógica", description: "Simular o circuito X"),
-    KanbanItemData(name: "Simulação analógica", description: "Simular o circuito X"),
-]);
-
-let kanbanInProgressSampleData = KanbanPartData(title: "Em progresso", items: [
-    KanbanItemData(name: "Simulação analógica", description: "Simular o circuito X"),
-    KanbanItemData(name: "Simulação analógica", description: "Simular o circuito X"),
-    KanbanItemData(name: "Simulação analógica", description: "Simular o circuito X"),
-    KanbanItemData(name: "Simulação analógica", description: "Simular o circuito X"),
-    KanbanItemData(name: "Simulação analógica", description: "Simular o circuito X"),
-    KanbanItemData(name: "Simulação analógica", description: "Simular o circuito X"),
-    KanbanItemData(name: "Simulação analógica", description: "Simular o circuito X"),
-    KanbanItemData(name: "Simulação analógica", description: "Simular o circuito X"),
-    KanbanItemData(name: "Simulação analógica", description: "Simular o circuito X"),
-]);
-
 struct HomeView: View {
     @State var searchText = ""
     @State var searchTag = ""
@@ -58,6 +32,32 @@ struct HomeView: View {
     }
 
     struct Dashboard: View {
+        let kanbanBacklogSampleData = KanbanPartData(title: "Backlog", items: [
+            KanbanItemData(name: "Simulação analógica", description: "Simular o circuito X"),
+            KanbanItemData(name: "Simulação analógica", description: "Simular o circuito X"),
+            KanbanItemData(name: "Simulação analógica", description: "Simular o circuito X"),
+            KanbanItemData(name: "Simulação analógica", description: "Simular o circuito X"),
+        ]);
+
+        let kanbanTodoSampleData = KanbanPartData(title: "To do", items: [
+            KanbanItemData(name: "Simulação analógica", description: "Simular o circuito X"),
+            KanbanItemData(name: "Simulação analógica", description: "Simular o circuito X"),
+            KanbanItemData(name: "Simulação analógica", description: "Simular o circuito X"),
+            KanbanItemData(name: "Simulação analógica", description: "Simular o circuito X"),
+        ]);
+
+        let kanbanInProgressSampleData = KanbanPartData(title: "Em progresso", items: [
+            KanbanItemData(name: "Simulação analógica", description: "Simular o circuito X"),
+            KanbanItemData(name: "Simulação analógica", description: "Simular o circuito X"),
+            KanbanItemData(name: "Simulação analógica", description: "Simular o circuito X"),
+            KanbanItemData(name: "Simulação analógica", description: "Simular o circuito X"),
+            KanbanItemData(name: "Simulação analógica", description: "Simular o circuito X"),
+            KanbanItemData(name: "Simulação analógica", description: "Simular o circuito X"),
+            KanbanItemData(name: "Simulação analógica", description: "Simular o circuito X"),
+            KanbanItemData(name: "Simulação analógica", description: "Simular o circuito X"),
+            KanbanItemData(name: "Simulação analógica", description: "Simular o circuito X"),
+        ]);
+        
         var body: some View {
             Group {
                 Text("Dashboard")
