@@ -69,6 +69,7 @@
 		0CC50778267E3D4E0004040C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				4B54B7AD2683627B00D4D2C0 /* EmbeddedVideo.swift */,
 				0CC50779267E3D4E0004040C /* SharedWorkspace.swift */,
 				0CC5077A267E3D4E0004040C /* PersonalWorkspace.swift */,
 			);
@@ -78,7 +79,6 @@
 		0CC5077E267E3D560004040C /* View */ = {
 			isa = PBXGroup;
 			children = (
-				4B54B7AD2683627B00D4D2C0 /* EmbeddedVideo.swift */,
 				4B54B7A92683626600D4D2C0 /* EmbeddedVideoView.swift */,
 				4B54B7AA2683626600D4D2C0 /* VideoView.swift */,
 				0CC5077F267E3D560004040C /* HomeView.swift */,
