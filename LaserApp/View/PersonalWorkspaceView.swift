@@ -9,9 +9,28 @@ import SwiftUI
 
 struct PersonalWorkspaceView: View {
     var workspaceName: String
+    @State var postItList: [PostIt] = []
     
     var body: some View {
-        Text(workspaceName)
+        HStack {
+            if postItList.count <= 0 {
+                Spacer()
+                Text(workspaceName)
+                Spacer()
+            } else {
+                ZStack {
+                    ForEach(postItList) { obj in
+                        obj
+                    }
+                }
+            }
+            Dropdown (options: ["PostIt", "Note", "YT Video"],
+                      placeholder: "Add an object") { selection in
+                if selection == "PostIt" {
+                    postItList.append(PostIt(position: CGPoint(x: 50, y: 50)))
+                }
+            }
+        }
     }
 }
 
