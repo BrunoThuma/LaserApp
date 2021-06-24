@@ -1,20 +1,36 @@
-//
+
 //  PostItView.swift
 //  Laser
 //
 //  Created by Bruno Thuma on 22/06/21.
-//
+
 
 import SwiftUI
+import AppKit
+
+extension NSTextView {
+    open override var frame: CGRect {
+        didSet {
+            backgroundColor = .clear //<<here clear
+            drawsBackground = true
+        }
+
+    }
+}
 
 struct PostIt: View {
     @State private var position = CGPoint(x: 50, y: 50)
     @State private var text = "Write in me!"
-    
+
+
     var body: some View {
-        TextField (text, text: $text)
+        VStack {
+        TextEditor(text: $text)
+            .padding(8)
+            .background(Color("yellow"))
+            .foregroundColor(Color("gray"))
             .frame(width: 100, height: 100)
-            .background(Color(.systemYellow))
+            .cornerRadius(20)
             .position(position)
             .gesture(
                 DragGesture()
@@ -22,7 +38,7 @@ struct PostIt: View {
                     self.position = newValue.location
                 })
             )
-            .textFieldStyle(PlainTextFieldStyle())
+        }
     }
 }
 
