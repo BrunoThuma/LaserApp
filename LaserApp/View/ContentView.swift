@@ -20,15 +20,22 @@ struct ContentView: View {
             List {
                 Section(header: Text("Sua Workspace")) {
                     NavigationLink(destination: HomeView()) {
-                        Text("􀎞 Home").bold()
+                        Text("􀎞 Home")
+                            .font(.system(size: 12.82, weight: .bold))
                     }
                     ForEach(personalWorkspaces) { workspace in
-                        NavigationLink("􀫗 \(workspace.name)", destination: PersonalWorkspaceView(workspaceName: workspace.name))
+                        NavigationLink(destination: PersonalWorkspaceView(workspaceName: workspace.name)) {
+                            Text("􀫗 \(workspace.name)")
+                                .font(.system(size: 12.82, weight: .regular))
+                        }
                     }
                 }
                 Section(header: Text("Workspaces Compartilhadas")) {
                     ForEach(sharedWorkspaces) { workspace in
-                        NavigationLink("􀤆 \(workspace.name)", destination: SharedWorkspaceView(workspaceName: workspace.name))
+                        NavigationLink(destination: SharedWorkspaceView(workspaceName: workspace.name)) {
+                            Text("􀆪 \(workspace.name)")
+                                .font(.system(size: 12.82, weight: .regular))
+                        }
                     }
                 }
             }
