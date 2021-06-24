@@ -11,6 +11,10 @@ struct ContentView: View {
     var personalWorkspaces: [PersonalWorkspace] = []
     var sharedWorkspaces: [SharedWorkspace] = []
     
+    func toggleSidebar() {
+        NSApp.keyWindow?.firstResponder?.tryToPerform(#selector(NSSplitViewController.toggleSidebar(_:)), with: nil)
+    }
+    
     var body: some View {
         NavigationView {
             List {
@@ -30,6 +34,13 @@ struct ContentView: View {
             }
             
             HomeView() // A placeholder to show before selection.
+        }
+        .toolbar {
+            ToolbarItem(placement: .navigation) {
+                Button(action: toggleSidebar, label: {
+                    Image(systemName: "sidebar.left")
+                })
+            }
         }
     }
 }
