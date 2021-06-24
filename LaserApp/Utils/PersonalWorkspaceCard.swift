@@ -11,39 +11,53 @@ struct PersonalWorkspaceCardData: Identifiable {
     let id = UUID()
     let title: String
     let hashtags: [HashtagData]
-    let workspaceId: UUID
+//    let workspaceId: UUID // remove for production
 }
 
 struct PersonalWorkspaceCard: View {
     var data: PersonalWorkspaceCardData
-    
-    let arrowButton: some View = Button(action: {
-        print("click")
-    }) {
-        Image(systemName: "chevron.right.circle")
-            .font(.system(size: 56.0))
-    }
+    var onClick: () -> Void
     
     var body: some View {
-        VStack(alignment: .leading) {
-            Text(data.title)
-                .font(.system(size: 20, weight: .bold))
-            
-            Spacer()
-            
-            HStack {
+        Group {
+            VStack {
                 HStack {
-                    ForEach(data.hashtags) { hashtag in
-                        Hashtag(data: hashtag)
-                            .padding(.trailing, 7)
-                    }
+                    Text(data.title)
+                        .font(.system(size: 20, weight: .bold))
                     
                     Spacer()
-                    
-                    arrowButton
+                }
+                
+                Spacer()
+                
+                HStack {
+                    HStack {
+                        ForEach(data.hashtags) { hashtag in
+                            Hashtag(data: hashtag)
+                                .padding(.trailing, 7)
+                        }
+                        
+                        Spacer()
+                        
+                        Button(action: {
+                            onClick()
+                        }) {
+                            Image(systemName: "chevron.right.circle")
+                                .font(.system(size: 18.57))
+                        }
+                        .buttonStyle(BorderlessButtonStyle())
+                    }
                 }
             }
+            .padding(.vertical, 14)
+            .padding(.horizontal, 24)
         }
+        .frame(width: 335, height: 124, alignment: .top)
+        .background(Color("gray"))
+        .cornerRadius(10)
+        .gesture(TapGesture().onEnded {
+            onClick()
+        })
     }
 }
 
