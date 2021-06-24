@@ -9,6 +9,20 @@ import SwiftUI
 import AppKit
 import WebKit
 
+class EmbeddedVideo: ObservableObject {
+    @Published var isLoading: Bool = false
+    @Published var canGoBack: Bool = false
+    @Published var shouldGoBack: Bool = false
+    @Published var title: String = ""
+    
+    var url: String
+    
+    init(url: String) {
+        self.url = url
+    }
+}
+
+
 struct EmbeddedVideoView: NSViewRepresentable {
     
     var videoString: String!
