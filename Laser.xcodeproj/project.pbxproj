@@ -23,6 +23,7 @@
 		5E805AF4267CEB4A00B39A6E /* LaserAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E805AF3267CEB4A00B39A6E /* LaserAppApp.swift */; };
 		5E805AF8267CEB4B00B39A6E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E805AF7267CEB4B00B39A6E /* Assets.xcassets */; };
 		5E805AFB267CEB4B00B39A6E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E805AFA267CEB4B00B39A6E /* Preview Assets.xcassets */; };
+		5EBF796B268612C20035E82A /* WorkspaceElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EBF796A268612C20035E82A /* WorkspaceElement.swift */; };
 		5EDDE0EA268217FB00722604 /* PostIt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EDDE0E9268217FB00722604 /* PostIt.swift */; };
 		5EDDE0EC2682298700722604 /* Notes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EDDE0EB2682298700722604 /* Notes.swift */; };
 /* End PBXBuildFile section */
@@ -47,6 +48,7 @@
 		5E805AFA267CEB4B00B39A6E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5E805AFC267CEB4B00B39A6E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5E805AFD267CEB4B00B39A6E /* LaserApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LaserApp.entitlements; sourceTree = "<group>"; };
+		5EBF796A268612C20035E82A /* WorkspaceElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceElement.swift; sourceTree = "<group>"; };
 		5EDDE0E9268217FB00722604 /* PostIt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostIt.swift; sourceTree = "<group>"; };
 		5EDDE0EB2682298700722604 /* Notes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notes.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -83,6 +85,7 @@
 			children = (
 				0CC50779267E3D4E0004040C /* SharedWorkspace.swift */,
 				0CC5077A267E3D4E0004040C /* PersonalWorkspace.swift */,
+				5EBF796A268612C20035E82A /* WorkspaceElement.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -215,6 +218,7 @@
 				0CC50785267E3D560004040C /* ContentView.swift in Sources */,
 				0CC50786267E3D560004040C /* PersonalWorkspaceView.swift in Sources */,
 				5EDDE0EC2682298700722604 /* Notes.swift in Sources */,
+				5EBF796B268612C20035E82A /* WorkspaceElement.swift in Sources */,
 				0CC50783267E3D560004040C /* HomeView.swift in Sources */,
 				4B54B7AB2683626600D4D2C0 /* EmbeddedVideo.swift in Sources */,
 				0C2DBF6C26837571003C0BB1 /* Hashtag.swift in Sources */,

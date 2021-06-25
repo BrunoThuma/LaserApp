@@ -1,4 +1,3 @@
-
 //  PostItView.swift
 //  Laser
 //
@@ -14,36 +13,43 @@ extension NSTextView {
             backgroundColor = .clear //<<here clear
             drawsBackground = true
         }
-
     }
 }
 
-struct PostIt: View {
-    @State private var position = CGPoint(x: 50, y: 50)
-    @State private var text = "Write in me!"
-
+struct PostItView: View {
+    @Binding var workspaceElement: WorkspaceElement
 
     var body: some View {
         VStack {
-        TextEditor(text: $text)
-            .padding(8)
-            .background(Color("yellow"))
-            .foregroundColor(Color("gray"))
-            .frame(width: 100, height: 100)
-            .cornerRadius(20)
-            .position(position)
-            .gesture(
-                DragGesture()
-                .onChanged({ newValue in
-                    self.position = newValue.location
-                })
-            )
+            HStack{
+                Spacer()
+                Image(systemName: "line.horizontal.3")
+                    .font(.system(size: 15))
+                    .padding(.top, 30)
+                    .padding(.trailing,20)
+            }
+            TextEditor(text: $workspaceElement.content)
+                .frame(height: 100)
+                .padding(8)
+                
+                
         }
+        .foregroundColor(Color("gray"))
+        .background(Color("yellow"))
+        .frame(width: 120, height: 120)
+        .cornerRadius(20)
+        .position(workspaceElement.position)
+        .gesture(
+            DragGesture()
+            .onChanged({ newValue in
+                self.workspaceElement.position = newValue.location
+            })
+        )
     }
 }
 
-struct PostIt_Previews: PreviewProvider {
-    static var previews: some View {
-        PostIt()
-    }
-}
+//struct PostIt_Previews: PreviewProvider {
+//    static var previews: some View {
+//        PostItView(workspaceElementModel: .init(position: CGPoint(x: 50, y: 50)))
+//    }
+//}
