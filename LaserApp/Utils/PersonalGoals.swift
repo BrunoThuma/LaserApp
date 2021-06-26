@@ -7,31 +7,32 @@
 
 import SwiftUI
 
-struct SectionItemData: Identifiable {
+struct PersonalGoalsSectionItemData: Identifiable {
     let id = UUID()
     var name: String
     var done: Bool = false
 }
 
-struct SectionData: Identifiable {
+struct PersonalGoalsSectionData: Identifiable {
     let id = UUID()
     let title: String
-    var items: [SectionItemData]
+    var items: [PersonalGoalsSectionItemData]
 }
 
 struct PersonalGoals: View {
-    var sectionsData: [SectionData]
+    
+    var sectionsData: [PersonalGoalsSectionData]
     
     struct ProgressBar: View {
         @Binding var value: Float
         
         var body: some View {
             ZStack(alignment: .leading) {
-                Rectangle().frame(width: 89, height: 2)
+                Rectangle().frame(width: 120, height: 3)
                     .opacity(0.3)
                     .foregroundColor(Color("black"))
                 
-                Rectangle().frame(width: 89*CGFloat(value), height: 2)
+                Rectangle().frame(width: 120*CGFloat(value), height: 3)
                     .foregroundColor(Color("purple"))
                     .animation(.linear)
             }
@@ -40,11 +41,11 @@ struct PersonalGoals: View {
     }
     
     struct Section: View {
-        @State var data: SectionData = SectionData(title: "", items: [])
+        @State var data: PersonalGoalsSectionData = PersonalGoalsSectionData(title: "", items: [])
         @State var progress: Float = 0.0
         
         struct SectionItemElement: View {
-            @Binding var data: SectionItemData
+            @Binding var data: PersonalGoalsSectionItemData
             var onChange: () -> Void
             
             var body: some View {
@@ -52,11 +53,11 @@ struct PersonalGoals: View {
                     Circle()
                         .strokeBorder(data.done ?  Color.clear : Color.white, lineWidth: 0.5)
                         .background(Circle().fill(data.done ? Color.purple : Color.clear))
-                        .frame(width: 6, height: 6)
+                        .frame(width: 10, height: 10)
                         .padding(.trailing, 5)
                     
                     Text(data.name)
-                        .font(.system(size: 6.9))
+                        .font(.system(size: 10))
                 }
                 .onTapGesture {
                     data.done = !data.done
@@ -80,7 +81,7 @@ struct PersonalGoals: View {
         var body: some View {
             VStack(alignment: .leading) {
                 Text(data.title)
-                    .font(.system(size: 7.55, weight: .semibold))
+                    .font(.system(size: 12, weight: .semibold))
                     .padding(.bottom, 4.68)
                 
                 ProgressBar(value: $progress)
@@ -101,7 +102,7 @@ struct PersonalGoals: View {
         Group {
             VStack(alignment: .leading) {
                 Text("Suas metas pessoais")
-                    .font(.system(size: 9.6, weight: .bold))
+                    .font(.system(size: 16, weight: .bold))
                     .padding(.bottom, 10)
                 
                 ForEach(Array(sectionsData.enumerated()), id: \.0) { i, item in
@@ -109,17 +110,17 @@ struct PersonalGoals: View {
                     
                     if i != sectionsData.count-1 {
                         Rectangle()
-                            .frame(width: 146, height: 1)
-                            .background(Color(.white).opacity(0.01))
+                            .frame(width: 170, height: 1)
+                            .background(Color.gray)
                             .padding(.vertical, 20)
                     }
                 }
             }
             .padding(10)
         }
-        .frame(width: 174, alignment: .topLeading)
+        .frame(width: 200, alignment: .topLeading)
         .background(Color("gray"))
-        .cornerRadius(4.69)
+        .cornerRadius(10)
     }
 }
 

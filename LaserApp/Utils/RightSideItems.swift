@@ -18,25 +18,34 @@ let hashtagsSampleData = [
 ]
 
 let sectionsSampleData = [
-    SectionData(title: "Entregas Sustentabilidade", items: [
-        SectionItemData(name: "Relatório"),
-        SectionItemData(name: "Entrevistas"),
-        SectionItemData(name: "Entrega mapa mental"),
+    PersonalGoalsSectionData(title: "Entregas Sustentabilidade", items: [
+        PersonalGoalsSectionItemData(name: "Relatório"),
+        PersonalGoalsSectionItemData(name: "Entrevistas"),
+        PersonalGoalsSectionItemData(name: "Entrega mapa mental"),
     ]),
-    SectionData(title: "TDE 02 / UX", items: [
-        SectionItemData(name: "Analise"),
-        SectionItemData(name: "Relatório"),
+    PersonalGoalsSectionData(title: "TDE 02 / UX", items: [
+        PersonalGoalsSectionItemData(name: "Analise"),
+        PersonalGoalsSectionItemData(name: "Relatório"),
     ]),
-    SectionData(title: "30 min meditação", items: [
-        SectionItemData(name: "Segunda"),
-        SectionItemData(name: "Terça"),
-        SectionItemData(name: "Quarta"),
-        SectionItemData(name: "Quinta"),
-        SectionItemData(name: "Sexta"),
+    PersonalGoalsSectionData(title: "30 min meditação", items: [
+        PersonalGoalsSectionItemData(name: "Segunda"),
+        PersonalGoalsSectionItemData(name: "Terça"),
+        PersonalGoalsSectionItemData(name: "Quarta"),
+        PersonalGoalsSectionItemData(name: "Quinta"),
+        PersonalGoalsSectionItemData(name: "Sexta"),
     ]),
 ]
 
+enum RightSideItemsType {
+    case home
+    case workspace
+}
+
 struct RightSideItems: View {
+    var type: RightSideItemsType = .home
+    
+    var importElement: (String) -> Void = {_ in ()}
+    
     struct ProfileAndNotifications: View {
         var body: some View {
             ZStack(alignment: .topTrailing) {
@@ -55,7 +64,7 @@ struct RightSideItems: View {
                     .frame(width: 132, height: 165)
                     .offset(x: -65, y: 15)
             }
-            .frame(width: 173, height: 190)
+            .frame(width: 200, height: 190)
         }
     }
     
@@ -94,7 +103,7 @@ struct RightSideItems: View {
             Group {
                 VStack(alignment: .leading) {
                     Text("Suas Hashtags")
-                        .font(.system(size: 9.6, weight: .bold))
+                        .font(.system(size: 16, weight: .bold))
                         .padding(.bottom, 10)
                     
                     ForEach(0..<hashtagsLines.count) { i in
@@ -107,9 +116,9 @@ struct RightSideItems: View {
                 }
                 .padding(10)
             }
-            .frame(width: 174, alignment: .topLeading)
+            .frame(width: 200, alignment: .topLeading)
             .background(Color("gray"))
-            .cornerRadius(4.69)
+            .cornerRadius(10)
         }
     }
     
@@ -118,20 +127,17 @@ struct RightSideItems: View {
             ProfileAndNotifications()
                 .padding(.bottom, 15)
             
-            Text("Adicione componentes")
-                .font(.system(size: 9.6, weight: .bold))
-                .frame(width: 174, height: 28)
-                .background(Color("gray"))
-                .cornerRadius(4.69)
-                .padding(.bottom, 18)
-            
             YourHashtags(hashtags: hashtagsSampleData)
                 .padding(.bottom, 18)
             
-            PersonalGoals(sectionsData: sectionsSampleData)
-            
+            switch(type) {
+            case .home:
+                PersonalGoals(sectionsData: sectionsSampleData)
+            case .workspace:
+                SharedWithYou(importElement: importElement)
+            }
         }
-        .frame(width: 175, alignment: .topLeading)
+        .frame(width: 200, alignment: .topLeading)
     }
 }
 
