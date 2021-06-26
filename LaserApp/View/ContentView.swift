@@ -18,11 +18,11 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             List {
+                NavigationLink(destination: HomeView()) {
+                    Text("􀎞 Home")
+                        .font(.system(size: 12.82, weight: .bold))
+                }
                 Section(header: Text("Sua Workspace")) {
-                    NavigationLink(destination: HomeView()) {
-                        Text("􀎞 Home")
-                            .font(.system(size: 12.82, weight: .bold))
-                    }
                     ForEach(personalWorkspaces) { workspace in
                         NavigationLink(destination: PersonalWorkspaceView(workspaceName: workspace.name)) {
                             Text("􀫗 \(workspace.name)")
