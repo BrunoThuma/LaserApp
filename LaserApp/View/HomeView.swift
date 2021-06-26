@@ -8,6 +8,82 @@
 
 import SwiftUI
 
+let kanbanBacklogSampleData = KanbanPartData(title: "Backlog", items: [
+    KanbanItemData(name: "Design tela Home", description: "Fazer o design da tela Home com todos os componentes criados no Figma, incluir ações de interação com o protótipo. Estar em conformidade com a paleta de cores."),
+    KanbanItemData(name: "Simulação analógica", description: "Simular o circuito X"),
+    KanbanItemData(name: "Simulação analógica", description: "Simular o circuito X"),
+    KanbanItemData(name: "Simulação analógica", description: "Simular o circuito X"),
+]);
+
+let kanbanTodoSampleData = KanbanPartData(title: "To do", items: [
+    KanbanItemData(name: "Simulação analógica", description: "Simular o circuito X"),
+    KanbanItemData(name: "Simulação analógica", description: "Simular o circuito X"),
+    KanbanItemData(name: "Simulação analógica", description: "Simular o circuito X"),
+    KanbanItemData(name: "Simulação analógica", description: "Simular o circuito X"),
+]);
+
+let kanbanInProgressSampleData = KanbanPartData(title: "Em progresso", items: [
+    KanbanItemData(name: "Simulação analógica", description: "Simular o circuito X"),
+    KanbanItemData(name: "Simulação analógica", description: "Simular o circuito X"),
+    KanbanItemData(name: "Simulação analógica", description: "Simular o circuito X"),
+    KanbanItemData(name: "Simulação analógica", description: "Simular o circuito X"),
+    KanbanItemData(name: "Simulação analógica", description: "Simular o circuito X"),
+    KanbanItemData(name: "Simulação analógica", description: "Simular o circuito X"),
+    KanbanItemData(name: "Simulação analógica", description: "Simular o circuito X"),
+    KanbanItemData(name: "Simulação analógica", description: "Simular o circuito X"),
+    KanbanItemData(name: "Simulação analógica", description: "Simular o circuito X"),
+]);
+
+let personalWorkspaceCardSampleData = [
+    PersonalWorkspaceCardData(
+        title: "interface - marcus",
+        hashtags: [
+            HashtagData(title: "video", color: "yellow"),
+            HashtagData(title: "podcast", color: "purple"),
+            HashtagData(title: "videoaula", color: "yellow"),
+            HashtagData(title: "audio", color: "yellow"),
+        ]
+    ),
+    PersonalWorkspaceCardData(
+        title: "interface - marcus",
+        hashtags: [
+            HashtagData(title: "video", color: "yellow"),
+            HashtagData(title: "podcast", color: "purple"),
+            HashtagData(title: "videoaula", color: "yellow"),
+            HashtagData(title: "audio", color: "yellow"),
+        ]
+    ),
+    PersonalWorkspaceCardData(
+        title: "interface - marcus",
+        hashtags: [
+            HashtagData(title: "video", color: "yellow"),
+            HashtagData(title: "podcast", color: "purple"),
+            HashtagData(title: "videoaula", color: "yellow"),
+            HashtagData(title: "audio", color: "yellow"),
+        ]
+    ),
+    PersonalWorkspaceCardData(
+        title: "interface - marcus",
+        hashtags: [
+            HashtagData(title: "video", color: "yellow"),
+            HashtagData(title: "podcast", color: "purple"),
+            HashtagData(title: "videoaula", color: "yellow"),
+            HashtagData(title: "audio", color: "yellow"),
+        ]
+    ),
+    PersonalWorkspaceCardData(
+        title: "interface - marcus",
+        hashtags: [
+            HashtagData(title: "video", color: "yellow"),
+            HashtagData(title: "podcast", color: "purple"),
+            HashtagData(title: "videoaula", color: "yellow"),
+            HashtagData(title: "audio", color: "yellow"),
+        ]
+    ),
+]
+
+
+
 struct HomeView: View {
     @State var searchText = ""
     @State var searchTag = ""
@@ -31,32 +107,10 @@ struct HomeView: View {
         }
     }
 
-    struct Dashboard: View {
-        let kanbanBacklogSampleData = KanbanPartData(title: "Backlog", items: [
-            KanbanItemData(name: "Design tela Home", description: "Fazer o design da tela Home com todos os componentes criados no Figma, incluir ações de interação com o protótipo. Estar em conformidade com a paleta de cores."),
-            KanbanItemData(name: "Simulação analógica", description: "Simular o circuito X"),
-            KanbanItemData(name: "Simulação analógica", description: "Simular o circuito X"),
-            KanbanItemData(name: "Simulação analógica", description: "Simular o circuito X"),
-        ]);
-
-        let kanbanTodoSampleData = KanbanPartData(title: "To do", items: [
-            KanbanItemData(name: "Simulação analógica", description: "Simular o circuito X"),
-            KanbanItemData(name: "Simulação analógica", description: "Simular o circuito X"),
-            KanbanItemData(name: "Simulação analógica", description: "Simular o circuito X"),
-            KanbanItemData(name: "Simulação analógica", description: "Simular o circuito X"),
-        ]);
-
-        let kanbanInProgressSampleData = KanbanPartData(title: "Em progresso", items: [
-            KanbanItemData(name: "Simulação analógica", description: "Simular o circuito X"),
-            KanbanItemData(name: "Simulação analógica", description: "Simular o circuito X"),
-            KanbanItemData(name: "Simulação analógica", description: "Simular o circuito X"),
-            KanbanItemData(name: "Simulação analógica", description: "Simular o circuito X"),
-            KanbanItemData(name: "Simulação analógica", description: "Simular o circuito X"),
-            KanbanItemData(name: "Simulação analógica", description: "Simular o circuito X"),
-            KanbanItemData(name: "Simulação analógica", description: "Simular o circuito X"),
-            KanbanItemData(name: "Simulação analógica", description: "Simular o circuito X"),
-            KanbanItemData(name: "Simulação analógica", description: "Simular o circuito X"),
-        ]);
+    struct DashboardSection: View {
+        var backlogData: KanbanPartData
+        var todoData: KanbanPartData
+        var inProgressData: KanbanPartData
         
         var body: some View {
             VStack(alignment: .leading) {
@@ -64,62 +118,16 @@ struct HomeView: View {
                     .font(.system(size: 48, weight: .regular))
                     .padding(.vertical, 55)
                 
-                Kanban(backlogPartData: kanbanBacklogSampleData, todoPartData: kanbanTodoSampleData, inProgressPartData: kanbanInProgressSampleData)
+                Kanban(backlogPartData: backlogData, todoPartData: todoData, inProgressPartData: inProgressData)
             }
         }
     }
     
     struct PersonalWorkspaceSection: View {
+        var data: [PersonalWorkspaceCardData]
+        
         let columns: [GridItem] =
                  Array(repeating: .init(.flexible()), count: 2)
-        
-        let personalWorkspaceCardSampleData = [
-            PersonalWorkspaceCardData(
-                title: "interface - marcus",
-                hashtags: [
-                    HashtagData(title: "video", color: "yellow"),
-                    HashtagData(title: "podcast", color: "purple"),
-                    HashtagData(title: "videoaula", color: "yellow"),
-                    HashtagData(title: "audio", color: "yellow"),
-                ]
-            ),
-            PersonalWorkspaceCardData(
-                title: "interface - marcus",
-                hashtags: [
-                    HashtagData(title: "video", color: "yellow"),
-                    HashtagData(title: "podcast", color: "purple"),
-                    HashtagData(title: "videoaula", color: "yellow"),
-                    HashtagData(title: "audio", color: "yellow"),
-                ]
-            ),
-            PersonalWorkspaceCardData(
-                title: "interface - marcus",
-                hashtags: [
-                    HashtagData(title: "video", color: "yellow"),
-                    HashtagData(title: "podcast", color: "purple"),
-                    HashtagData(title: "videoaula", color: "yellow"),
-                    HashtagData(title: "audio", color: "yellow"),
-                ]
-            ),
-            PersonalWorkspaceCardData(
-                title: "interface - marcus",
-                hashtags: [
-                    HashtagData(title: "video", color: "yellow"),
-                    HashtagData(title: "podcast", color: "purple"),
-                    HashtagData(title: "videoaula", color: "yellow"),
-                    HashtagData(title: "audio", color: "yellow"),
-                ]
-            ),
-            PersonalWorkspaceCardData(
-                title: "interface - marcus",
-                hashtags: [
-                    HashtagData(title: "video", color: "yellow"),
-                    HashtagData(title: "podcast", color: "purple"),
-                    HashtagData(title: "videoaula", color: "yellow"),
-                    HashtagData(title: "audio", color: "yellow"),
-                ]
-            ),
-        ]
         
         var body: some View {
             VStack(alignment: .leading) {
@@ -146,13 +154,19 @@ struct HomeView: View {
     
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading) {
-                Header(searchText: $searchText, searchTag: $searchTag, tagOptions: ["veja", "escute", "anote", "pratique"])
-                    .offset(x: 0, y: 0)
-                 
-                Dashboard()
+            HStack(alignment: .top) {
+                VStack(alignment: .leading) {
+                    Header(searchText: $searchText, searchTag: $searchTag, tagOptions: ["veja", "escute", "anote", "pratique"])
+                        .offset(x: 0, y: 0)
+                     
+                    DashboardSection(backlogData: kanbanBacklogSampleData, todoData: kanbanTodoSampleData, inProgressData: kanbanInProgressSampleData)
+                    
+                    PersonalWorkspaceSection(data: personalWorkspaceCardSampleData)
+                }
                 
-                PersonalWorkspaceSection()
+                Spacer()
+                
+                RightSideItems()
             }
             .padding(.horizontal, 30)
             .padding(.vertical, 30)
