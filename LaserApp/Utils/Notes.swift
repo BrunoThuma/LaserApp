@@ -24,7 +24,6 @@ struct NotesView: View {
                     self.workspaceElement.position = newValue.location
                 })
             )
-        Text("Jonas")
     }
 }
 

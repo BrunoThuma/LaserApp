@@ -33,10 +33,10 @@ struct PersonalWorkspaceView: View {
     }
     
     var body: some View {
-        return HStack {
+        return VStack {
             if workspaceElementList.count <= 0 {
                 Spacer()
-                Text(workspaceName)
+                Text(workspaceName + workspaceElementList.count.description)
                 Spacer()
             } else {
                 ZStack {
@@ -51,51 +51,63 @@ struct PersonalWorkspaceView: View {
                         }
                     }
                 }
-            }
-            Dropdown (options: ["PostIt", "Note", "YT Video"],
-                      placeholder: "Add an object") { selection in
-                switch selection {
-                case "PostIt":
-                    workspaceElementList.append(
-                        WorkspaceElement(
-                            date: Date(),
-                            position: CGPoint(x: 100, y: 100),
-                            type: .postIt)
-                    )
-                case "Note":
-                    workspaceElementList.append(
-                        WorkspaceElement(
-                            date: Date(),
-                            position: CGPoint(x: 100, y: 100),
-                            type: .note)
-                    )
-                case "YT Video":
-                    workspaceElementList.append(
-                        WorkspaceElement(
-                            date: Date(),
-                            position: CGPoint(x: 400, y: 400),
-                            type: .video)
-                    )
-                default:
-                    print("Default case on element creation switch")
-                }
-                saveScreen()
-                reloadScreen()
-            }
-        }
+            }// HStack
+            HStack {
+                let miniatureNamesList: [String] = ["postItMiniature", "notesMiniature", "videoEmbedMiniature"]
+                
+                Text("Add Stuff:")
+                    .padding(.horizontal, 10)
+                ForEach(miniatureNamesList, id: \.self) { miniatureName in
+                    Button(action: {
+                        switch miniatureName {
+                        case "postItMiniature":
+                            workspaceElementList.append(
+                              WorkspaceElement(
+                                  date: Date(),
+                                  position: CGPoint(x: 100, y: 100),
+                                  type: .postIt)
+                            )
+                        case "notesMiniature":
+                            workspaceElementList.append(
+                              WorkspaceElement(
+                                  date: Date(),
+                                  position: CGPoint(x: 100, y: 100),
+                                  type: .note)
+                            )
+                        case "videoEmbedMiniature":
+                            workspaceElementList.append(
+                              WorkspaceElement(
+                                  date: Date(),
+                                  position: CGPoint(x: 400, y: 400),
+                                  type: .video)
+                            )
+                        default:
+                          print("Default case on toolbar switch")
+                        }
+                        saveScreen()
+                        reloadScreen()
+                    }) {
+                        Image(miniatureName)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(height: 30)
+                            .padding(.horizontal, 10)
+                            .padding(.vertical, 5)
+                            
+                    }.buttonStyle(PlainButtonStyle()) // Button
+                }// ForEach
+            } // HStack
+            .background(Color("black"))
+            .cornerRadius(8)
+            .padding(.horizontal, 50)
+            .padding(.bottom, 15)
+//            .frame(maxWidth: .infinity)
+        } // VStack
         .onDisappear {
-            // Serializa e salva objeto usando chave + nome do workspace
-            // UserDefault + String extension
-            
             saveScreen()
             
-//            UserDefaults.standard.setValue(
-//                try? PropertyListEncoder().encode(workspaceElementList),
-//                forKey: .postItListKey + workspaceName)
         }
-        .onAppear {
-            reloadScreen()
-        }
+        .onAppear { reloadScreen() }
     }
 }
 
