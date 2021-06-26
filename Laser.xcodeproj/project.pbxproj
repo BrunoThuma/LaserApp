@@ -11,6 +11,7 @@
 		0C2DBF6C26837571003C0BB1 /* Hashtag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2DBF6B26837571003C0BB1 /* Hashtag.swift */; };
 		0C4C4B5C2687B24F00321E28 /* PersonalGoals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4C4B5B2687B24F00321E28 /* PersonalGoals.swift */; };
 		0C57C70626860B3B002DD4E5 /* RightSideItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C57C70526860B3B002DD4E5 /* RightSideItems.swift */; };
+		0C997C4D2687C321006C4F2A /* SharedWithYou.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C997C4C2687C321006C4F2A /* SharedWithYou.swift */; };
 		0CBF84062680C48C008D5A40 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBF84052680C48C008D5A40 /* SearchBar.swift */; };
 		0CBF84082680CEDB008D5A40 /* Dropdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBF84072680CEDB008D5A40 /* Dropdown.swift */; };
 		0CBF840B268223A5008D5A40 /* Kanban.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBF840A268223A5008D5A40 /* Kanban.swift */; };
@@ -35,6 +36,7 @@
 		0C2DBF6B26837571003C0BB1 /* Hashtag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hashtag.swift; sourceTree = "<group>"; };
 		0C4C4B5B2687B24F00321E28 /* PersonalGoals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalGoals.swift; sourceTree = "<group>"; };
 		0C57C70526860B3B002DD4E5 /* RightSideItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightSideItems.swift; sourceTree = "<group>"; };
+		0C997C4C2687C321006C4F2A /* SharedWithYou.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedWithYou.swift; sourceTree = "<group>"; };
 		0CBF84052680C48C008D5A40 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		0CBF84072680CEDB008D5A40 /* Dropdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dropdown.swift; sourceTree = "<group>"; };
 		0CBF840A268223A5008D5A40 /* Kanban.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kanban.swift; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 				0C2DBF6B26837571003C0BB1 /* Hashtag.swift */,
 				0C57C70526860B3B002DD4E5 /* RightSideItems.swift */,
 				0C4C4B5B2687B24F00321E28 /* PersonalGoals.swift */,
+				0C997C4C2687C321006C4F2A /* SharedWithYou.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -225,6 +228,7 @@
 				0C57C70626860B3B002DD4E5 /* RightSideItems.swift in Sources */,
 				0CC50786267E3D560004040C /* PersonalWorkspaceView.swift in Sources */,
 				5EDDE0EC2682298700722604 /* Notes.swift in Sources */,
+				0C997C4D2687C321006C4F2A /* SharedWithYou.swift in Sources */,
 				5EBF796B268612C20035E82A /* WorkspaceElement.swift in Sources */,
 				0CC50783267E3D560004040C /* HomeView.swift in Sources */,
 				4B54B7AB2683626600D4D2C0 /* EmbeddedVideo.swift in Sources */,
