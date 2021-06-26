@@ -8,27 +8,33 @@
 import SwiftUI
 
 struct NotesView: View {
-    @State private var position = CGPoint(x: 50, y: 50)
-    @State private var dateTime = Date()
-    @State private var text = "Write in me!"
+    @Binding var workspaceElement: WorkspaceElement
+//    @State private var position = CGPoint(x: 50, y: 50)
+//    @State private var dateTime = Date()
+//    @State private var text = "Write in me!"
     
     var body: some View {
-        TextField (text, text: $text)
+        TextField (workspaceElement.content, text: $workspaceElement.content)
             .frame(width: 100, height: 100)
             .background(Color(.systemGray))
-            .position(position)
+            .position(workspaceElement.position)
             .gesture(
                 DragGesture()
                 .onChanged({ newValue in
-                    self.position = newValue.location
+                    self.workspaceElement.position = newValue.location
                 })
             )
         Text("Jonas")
     }
 }
 
-struct NotesView_Previews: PreviewProvider {
-    static var previews: some View {
-        NotesView()
-    }
-}
+//struct NotesView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        NotesView(
+//            workspaceElement: WorkspaceElement(
+//                date: Date(),
+//                position: CGPoint(x: 100, y: 100),
+//                type: .note)
+//        )
+//    }
+//}

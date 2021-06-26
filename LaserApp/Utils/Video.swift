@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct VideoView: View {
-    @State private var videoUrl: String = ""
-    @State private var position: CGPoint = CGPoint(x:400, y:400)
+//    @State private var videoUrl: String = ""
+//    @State private var position: CGPoint = CGPoint(x:400, y:400)
+    @Binding var workspaceElement: WorkspaceElement
     
     var body: some View {
         VStack{
@@ -25,8 +26,8 @@ struct VideoView: View {
             Spacer()
             
             VStack{
-                if videoUrl.contains("https://www.youtube.com/watch?v=") || videoUrl.contains("https://youtu.be/") {
-                    EmbeddedVideoView(videoString: videoUrl)
+                if self.workspaceElement.content.contains("https://www.youtube.com/watch?v=") || self.workspaceElement.content.contains("https://youtu.be/") {
+                    EmbeddedVideoView(videoString: self.workspaceElement.content)
                 } else {
                     HStack{
                         Spacer()
@@ -42,7 +43,8 @@ struct VideoView: View {
                                 HStack{
                                     Image(systemName: "link")
                                         .font(Font.body.weight(.heavy))
-                                    TextField("Cole o link do vídeo aqui", text: $videoUrl)
+                                    TextField("Cole o link do vídeo aqui",
+                                              text: $workspaceElement.content)
                                         .textFieldStyle(PlainTextFieldStyle())
                                         .fixedSize()
                                 }
@@ -67,17 +69,17 @@ struct VideoView: View {
         .frame(width: 510, height: 320)
         .background(Color("pink"))
         .cornerRadius(20)
-        .position(position)
+        .position(self.workspaceElement.position)
         .gesture(
             DragGesture()
                 .onChanged({ newValue in
-                    self.position = newValue.location
+                    self.workspaceElement.position = newValue.location
                 }))
     }
 }
 
-struct VideoView_Previews: PreviewProvider {
-    static var previews: some View {
-        VideoView()
-    }
-}
+//struct VideoView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        VideoView()
+//    }
+//}
