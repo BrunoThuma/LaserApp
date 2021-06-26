@@ -17,6 +17,25 @@ let hashtagsSampleData = [
     HashtagData(title: "leia", color: "turquoise"),
 ]
 
+let sectionsSampleData = [
+    SectionData(title: "Entregas Sustentabilidade", items: [
+        SectionItemData(name: "Relatório"),
+        SectionItemData(name: "Entrevistas"),
+        SectionItemData(name: "Entrega mapa mental"),
+    ]),
+    SectionData(title: "TDE 02 / UX", items: [
+        SectionItemData(name: "Analise"),
+        SectionItemData(name: "Relatório"),
+    ]),
+    SectionData(title: "30 min meditação", items: [
+        SectionItemData(name: "Segunda"),
+        SectionItemData(name: "Terça"),
+        SectionItemData(name: "Quarta"),
+        SectionItemData(name: "Quinta"),
+        SectionItemData(name: "Sexta"),
+    ]),
+]
+
 struct RightSideItems: View {
     struct ProfileAndNotifications: View {
         var body: some View {
@@ -94,28 +113,6 @@ struct RightSideItems: View {
         }
     }
     
-    struct PersonalGoals: View {
-        var body: some View {
-            Group {
-                VStack(alignment: .leading) {
-                    Text("Suas metas pessoais")
-                        .font(.system(size: 9.6, weight: .bold))
-                        .padding(.bottom, 10)
-                    
-                    Text("Entregas Sustentabilidade")
-                        .font(.system(size: 7.55, weight: .semibold))
-                        .padding(.bottom, 6)
-                    
-                    
-                }
-                .padding(10)
-            }
-            .frame(width: 174, alignment: .topLeading)
-            .background(Color("gray"))
-            .cornerRadius(4.69)
-        }
-    }
-    
     var body: some View {
         VStack(alignment: .leading) {
             ProfileAndNotifications()
@@ -129,6 +126,9 @@ struct RightSideItems: View {
                 .padding(.bottom, 18)
             
             YourHashtags(hashtags: hashtagsSampleData)
+                .padding(.bottom, 18)
+            
+            PersonalGoals(sectionsData: sectionsSampleData)
             
         }
         .frame(width: 175, alignment: .topLeading)

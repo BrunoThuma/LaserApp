@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0C2DBF6926837413003C0BB1 /* PersonalWorkspaceCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2DBF6826837413003C0BB1 /* PersonalWorkspaceCard.swift */; };
 		0C2DBF6C26837571003C0BB1 /* Hashtag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2DBF6B26837571003C0BB1 /* Hashtag.swift */; };
+		0C4C4B5C2687B24F00321E28 /* PersonalGoals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4C4B5B2687B24F00321E28 /* PersonalGoals.swift */; };
 		0C57C70626860B3B002DD4E5 /* RightSideItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C57C70526860B3B002DD4E5 /* RightSideItems.swift */; };
 		0CBF84062680C48C008D5A40 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBF84052680C48C008D5A40 /* SearchBar.swift */; };
 		0CBF84082680CEDB008D5A40 /* Dropdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBF84072680CEDB008D5A40 /* Dropdown.swift */; };
@@ -32,6 +33,7 @@
 /* Begin PBXFileReference section */
 		0C2DBF6826837413003C0BB1 /* PersonalWorkspaceCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalWorkspaceCard.swift; sourceTree = "<group>"; };
 		0C2DBF6B26837571003C0BB1 /* Hashtag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hashtag.swift; sourceTree = "<group>"; };
+		0C4C4B5B2687B24F00321E28 /* PersonalGoals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalGoals.swift; sourceTree = "<group>"; };
 		0C57C70526860B3B002DD4E5 /* RightSideItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightSideItems.swift; sourceTree = "<group>"; };
 		0CBF84052680C48C008D5A40 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		0CBF84072680CEDB008D5A40 /* Dropdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dropdown.swift; sourceTree = "<group>"; };
@@ -79,6 +81,7 @@
 				0C2DBF6826837413003C0BB1 /* PersonalWorkspaceCard.swift */,
 				0C2DBF6B26837571003C0BB1 /* Hashtag.swift */,
 				0C57C70526860B3B002DD4E5 /* RightSideItems.swift */,
+				0C4C4B5B2687B24F00321E28 /* PersonalGoals.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -228,6 +231,7 @@
 				0C2DBF6C26837571003C0BB1 /* Hashtag.swift in Sources */,
 				0CBF84062680C48C008D5A40 /* SearchBar.swift in Sources */,
 				5E805AF4267CEB4A00B39A6E /* LaserAppApp.swift in Sources */,
+				0C4C4B5C2687B24F00321E28 /* PersonalGoals.swift in Sources */,
 				0CBF840B268223A5008D5A40 /* Kanban.swift in Sources */,
 				0CC50784267E3D560004040C /* SharedWorkspaceView.swift in Sources */,
 			);
