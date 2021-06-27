@@ -7,25 +7,64 @@
 
 import SwiftUI
 
+
+
 struct NotesView: View {
     @Binding var workspaceElement: WorkspaceElement
-//    @State private var position = CGPoint(x: 50, y: 50)
-//    @State private var dateTime = Date()
-//    @State private var text = "Write in me!"
+    
+    
+    func dateToString(date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd/MM/yyyy  HH:mm"
+        let dateString = formatter.string(from: date)
+        
+        return dateString
+    }
+    
     
     var body: some View {
-        TextField (workspaceElement.content, text: $workspaceElement.content)
-            .frame(width: 100, height: 100)
-            .background(Color(.systemGray))
-            .position(workspaceElement.position)
-            .gesture(
-                DragGesture()
-                .onChanged({ newValue in
-                    self.workspaceElement.position = newValue.location
+        VStack(alignment: .leading) {
+            HStack{
+                Spacer()
+                Image(systemName: "ellipsis")
+                    .font(.system(size: 15))
+                    .foregroundColor(Color("gray"))
+                    .padding(.top, 50)
+                    .padding(.trailing, 15)
+            }
+            Text(dateToString(date: workspaceElement.date))
+                .foregroundColor(Color("black"))
+                .font(.system(size: 10))
+                .padding(.leading,12)
+                .padding(.top, 2)
+            
+            TextEditor(text: $workspaceElement.content)
+                .foregroundColor(Color("gray"))
+                .font(.system(size: 10))
+                .frame(height: 160)
+                .padding(.leading,8)
+                .padding(.trailing, 8)
+                .padding(.bottom, 8)
+                .onChange(of: workspaceElement.content, perform: { content in
+                    workspaceElement.date = Date()
                 })
-            )
+        }
+        .frame(width: 150, height: 180)
+        .background(Color("white"))
+        .cornerRadius(20)
+        .position(workspaceElement.position)
+        .shadow(radius: 5)
+        .gesture(
+            DragGesture()
+            .onChanged({ newValue in
+                self.workspaceElement.position = newValue.location
+            })
+        )
     }
+    
 }
+
+
 
 //struct NotesView_Previews: PreviewProvider {
 //    static var previews: some View {
