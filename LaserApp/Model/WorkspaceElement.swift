@@ -7,8 +7,11 @@ struct WorkspaceElement: Codable, Identifiable {
     var date: Date
     var type: ElementType
     let id: UUID
+    var fixed: Bool = false
+    var showElement: Bool = true
+    var showMenu: Bool = false
     
-    init(id: UUID = UUID(), date: Date, position: CGPoint, text: String = "Write in me!", type: ElementType) {
+    init(id: UUID = UUID(), date: Date, position: CGPoint, text: String = "", type: ElementType) {
         self.position = position
         self.content = text
         self.date = date

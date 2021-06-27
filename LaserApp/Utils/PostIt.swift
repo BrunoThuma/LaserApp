@@ -18,20 +18,85 @@ extension NSTextView {
 
 struct PostItView: View {
     @Binding var workspaceElement: WorkspaceElement
+    var deleteItem: (UUID) -> Void
 
     var body: some View {
-        VStack {
-            HStack{
-                Spacer()
-                Image(systemName: "ellipsis")
-                    .font(.system(size: 15))
-                    .padding(.top, 30)
-                    .padding(.trailing, 15)
-            }
+        ZStack {
+            
             TextEditor(text: $workspaceElement.content)
                 .font(.system(size: 10).bold())
                 .frame(height: 100)
+                .padding(.top, 15)
                 .padding(8)
+            
+            VStack{
+                HStack{
+                    Spacer()
+                    if workspaceElement.showMenu {
+                        Menu{
+                        
+                            
+                            Menu {
+                                Button(action: {
+                                    
+                                }) {
+                                    Label("UX Design", systemImage: "globe")
+                                }
+                                Button(action: {
+                                    
+                                }) {
+                                    Label("Design Editorial", systemImage: "globe")
+                                }
+                                Button(action: {
+                                    
+                                }) {
+                                    Label("Design de Interfaces", systemImage: "globe")
+                                }
+                                Button(action: {
+                                    
+                                }) {
+                                    Label("Leitura e Escrita Acadêmica", systemImage: "globe")
+                                }
+                            }label : {
+                                Label("Share", systemImage: "square.and.arrow.up")
+                                
+                            }.menuStyle(BorderlessButtonMenuStyle(showsMenuIndicator: false))
+                            .fixedSize()
+                            
+                            Button(action: {
+                                
+                            }) {
+                                Label("Add tag", systemImage: "tag")
+                            }
+                            
+                            Button(action: {
+                                self.workspaceElement.fixed = !self.workspaceElement.fixed
+                            }) {
+                                
+                                if self.workspaceElement.fixed {
+                                    Label("Unfix position", systemImage: "pin.slash")
+                                }else {
+                                    Label("Fix position", systemImage: "pin")
+                                }
+                            }
+                            
+                            Button(action: {
+                                deleteItem(workspaceElement.id)
+                            }) {
+                                Label("Delete", systemImage: "trash")
+                            }
+                        } label: {
+                            Image(systemName: "ellipsis")
+                                .font(.system(size: 15))
+                        }
+                        .menuStyle(BorderlessButtonMenuStyle(showsMenuIndicator: false))
+                        .fixedSize()
+                        .padding(.top, 10)
+                        .padding(.trailing,12)
+                    }
+                }
+                Spacer()
+            }
                 
         }
         .foregroundColor(Color("gray"))
@@ -43,9 +108,14 @@ struct PostItView: View {
         .gesture(
             DragGesture()
             .onChanged({ newValue in
-                self.workspaceElement.position = newValue.location
+                if !workspaceElement.fixed{
+                    self.workspaceElement.position = newValue.location
+                }
             })
         )
+        .onHover { over in
+            workspaceElement.showMenu = over
+        }
     }
 }
 

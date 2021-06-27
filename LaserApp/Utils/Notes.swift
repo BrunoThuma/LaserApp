@@ -11,7 +11,7 @@ import SwiftUI
 
 struct NotesView: View {
     @Binding var workspaceElement: WorkspaceElement
-    
+    var deleteItem: (UUID) -> Void
     
     func dateToString(date: Date) -> String {
         let formatter = DateFormatter()
@@ -23,31 +23,101 @@ struct NotesView: View {
     
     
     var body: some View {
-        VStack(alignment: .leading) {
-            HStack{
+        ZStack{
+            VStack{
                 Spacer()
-                Image(systemName: "ellipsis")
-                    .font(.system(size: 15))
+                HStack{
+                    Text(dateToString(date: workspaceElement.date))
+                        .foregroundColor(Color("black"))
+                        .font(.system(size: 10))
+                        .padding(.leading,12)
+                        .padding(.top, 30)
+                    Spacer()
+                }
+                
+                
+                TextEditor(text: $workspaceElement.content)
                     .foregroundColor(Color("gray"))
-                    .padding(.top, 50)
-                    .padding(.trailing, 15)
+                    .font(.system(size: 10))
+                    .frame(height: 160)
+                    .padding(.leading,8)
+                    .padding(.trailing, 8)
+                    .padding(.bottom, 8)
+                    .onChange(of: workspaceElement.content, perform: { content in
+                        workspaceElement.date = Date()
+                    
+                    })
             }
-            Text(dateToString(date: workspaceElement.date))
-                .foregroundColor(Color("black"))
-                .font(.system(size: 10))
-                .padding(.leading,12)
-                .padding(.top, 2)
             
-            TextEditor(text: $workspaceElement.content)
-                .foregroundColor(Color("gray"))
-                .font(.system(size: 10))
-                .frame(height: 160)
-                .padding(.leading,8)
-                .padding(.trailing, 8)
-                .padding(.bottom, 8)
-                .onChange(of: workspaceElement.content, perform: { content in
-                    workspaceElement.date = Date()
-                })
+            VStack{
+                HStack{
+                    Spacer()
+                    if workspaceElement.showMenu {
+                        Menu{
+                        
+                            
+                            Menu {
+                                Button(action: {
+                                    
+                                }) {
+                                    Label("UX Design", systemImage: "globe")
+                                }
+                                Button(action: {
+                                    
+                                }) {
+                                    Label("Design Editorial", systemImage: "globe")
+                                }
+                                Button(action: {
+                                    
+                                }) {
+                                    Label("Design de Interfaces", systemImage: "globe")
+                                }
+                                Button(action: {
+                                    
+                                }) {
+                                    Label("Leitura e Escrita Acadêmica", systemImage: "globe")
+                                }
+                            }label : {
+                                Label("Share", systemImage: "square.and.arrow.up")
+                                
+                            }.menuStyle(BorderlessButtonMenuStyle(showsMenuIndicator: false))
+                            .fixedSize()
+                            
+                            Button(action: {
+                                
+                            }) {
+                                Label("Add tag", systemImage: "tag")
+                            }
+                            
+                            Button(action: {
+                                self.workspaceElement.fixed = !self.workspaceElement.fixed
+                            }) {
+                                
+                                if self.workspaceElement.fixed {
+                                    Label("Unfix position", systemImage: "pin.slash")
+                                }else {
+                                    Label("Fix position", systemImage: "pin")
+                                }
+                            }
+                            
+                            Button(action: {
+                                deleteItem(workspaceElement.id)
+                            }) {
+                                Label("Delete", systemImage: "trash")
+                            }
+                        } label: {
+                            Image(systemName: "ellipsis")
+                                .font(.system(size: 15))
+                        }
+                        .foregroundColor(.black)
+                        .menuStyle(BorderlessButtonMenuStyle(showsMenuIndicator: false))
+                        .fixedSize()
+                        .padding(.top, 28)
+                        .padding(.trailing,12)
+                    }
+                }
+                Spacer()
+            }
         }
         .frame(width: 150, height: 180)
         .background(Color("white"))
@@ -57,9 +127,14 @@ struct NotesView: View {
         .gesture(
             DragGesture()
             .onChanged({ newValue in
-                self.workspaceElement.position = newValue.location
+                if !workspaceElement.fixed{
+                    self.workspaceElement.position = newValue.location
+                }
             })
         )
+        .onHover { over in
+            workspaceElement.showMenu = over
+        }
     }
     
 }

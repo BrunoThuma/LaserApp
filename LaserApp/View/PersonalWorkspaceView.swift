@@ -15,39 +15,57 @@ struct PersonalWorkspaceView: View {
     var workspaceName: String
     @State var workspaceElementList: [WorkspaceElement] = []
     
-    func saveScreen() {
+    func saveScreen(workspaceElementeListUpdated: [WorkspaceElement]) {
         UserDefaults.standard.setValue(
-            try? PropertyListEncoder().encode(workspaceElementList),
+            try? PropertyListEncoder().encode(workspaceElementeListUpdated),
             forKey: .elementListKey + workspaceName)
     }
     
     func reloadScreen() {
         // Guard -> condicoes separadas por virgulas, caso nil entra no else
         guard let data = UserDefaults.standard.value(forKey: .elementListKey + workspaceName) as? Data,
-              let postItList = try? PropertyListDecoder().decode([WorkspaceElement].self, from: data) else  {
+              let elementList = try? PropertyListDecoder().decode([WorkspaceElement].self, from: data) else  {
             
             self.workspaceElementList = []
             return
         }
-        self.workspaceElementList = postItList
+        self.workspaceElementList = elementList
+    }
+    
+    func deleteElement(id: UUID){
+        var workspaceElementListUpdated = workspaceElementList
+        let index = workspaceElementList.firstIndex(where: {item in
+            if item.id == id {
+                return true
+            }
+            return false
+        })
+        
+        workspaceElementListUpdated.remove(at: index!)
+        saveScreen(workspaceElementeListUpdated: workspaceElementListUpdated)
+        workspaceElementList[index!].showElement = false
     }
     
     var body: some View {
         return VStack {
             if workspaceElementList.count <= 0 {
                 Spacer()
-                Text(workspaceName + workspaceElementList.count.description)
+                Text(workspaceName)
                 Spacer()
             } else {
                 ZStack {
                     ForEach(Array(workspaceElementList.enumerated()), id: \.0) { i, element in
-                        switch element.type {
-                        case .postIt:
-                            PostItView(workspaceElement: $workspaceElementList[i])
-                        case .note:
-                            NotesView(workspaceElement: $workspaceElementList[i])
-                        case .video:
-                            VideoView(workspaceElement: $workspaceElementList[i])
+                        if element.showElement {
+                            switch element.type {
+                            case .postIt:
+                                PostItView(workspaceElement: $workspaceElementList[i], deleteItem: deleteElement)
+                            case .note:
+                                NotesView(workspaceElement: $workspaceElementList[i], deleteItem: deleteElement)
+                            case .video:
+                                VideoView(workspaceElement: $workspaceElementList[i], deleteItem: deleteElement)
+                            }
+                        } else {
+                            Group {}
                         }
                     }
                 }
@@ -84,7 +102,7 @@ struct PersonalWorkspaceView: View {
                         default:
                           print("Default case on toolbar switch")
                         }
-                        saveScreen()
+                        saveScreen(workspaceElementeListUpdated: workspaceElementList)
                         reloadScreen()
                     }) {
                         Image(miniatureName)
@@ -104,7 +122,7 @@ struct PersonalWorkspaceView: View {
 //            .frame(maxWidth: .infinity)
         } // VStack
         .onDisappear {
-            saveScreen()
+            saveScreen(workspaceElementeListUpdated: workspaceElementList)
             
         }
         .onAppear { reloadScreen() }
