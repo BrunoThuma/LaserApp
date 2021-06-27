@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct VideoView: View {
-//    @State private var videoUrl: String = ""
-//    @State private var position: CGPoint = CGPoint(x:400, y:400)
     @Binding var workspaceElement: WorkspaceElement
     
     var body: some View {
@@ -17,10 +15,10 @@ struct VideoView: View {
             HStack{
                 Spacer()
                 Image(systemName: "ellipsis")
-                    .foregroundColor(.white)
+                    .foregroundColor(Color("gray"))
                     .font(.system(size: 15))
                     .padding(.top,20)
-                    .padding(.trailing,20)
+                    .padding(.trailing,15)
             }
             
             Spacer()
@@ -32,14 +30,14 @@ struct VideoView: View {
                     HStack{
                         Spacer()
                         
-                        VStack{
-                            Spacer()
+                        ZStack{
                             VStack(alignment: .center){
                                 Image(systemName: "play.rectangle.fill")
-                                    .font(.system(size: 60))
-                            }.padding(30)
+                                    .font(.system(size: 30))
+                            }.padding()
                             
                             VStack(alignment:.center) {
+                                Spacer()
                                 HStack{
                                     Image(systemName: "link")
                                         .font(Font.body.weight(.heavy))
@@ -48,10 +46,12 @@ struct VideoView: View {
                                         .textFieldStyle(PlainTextFieldStyle())
                                         .fixedSize()
                                 }
+                                .padding(8)
+                                .background(Color.gray.opacity(0.10))
+                                .cornerRadius(10)
                             }
                             .padding()
-                            .background(Color.gray.opacity(0.10))
-                            .cornerRadius(10)
+                            
                             Spacer()
                         }
                         
@@ -60,16 +60,17 @@ struct VideoView: View {
                 }
             }
             .background(Color.black)
-            .frame(width: 480, height: 270)
-            //.cornerRadius(20)
+            .frame(width: 320, height: 180)
+            .cornerRadius(12)
             .padding(.bottom, 20)
-            .padding(.trailing, 20)
-            .padding(.leading, 20)
+            .padding(.trailing, 3)
+            .padding(.leading, 3)
         }
-        .frame(width: 510, height: 320)
-        .background(Color("pink"))
-        .cornerRadius(20)
+        .frame(width: 325, height: 200)
+        .background(Color("turquoise"))
+        .cornerRadius(16)
         .position(self.workspaceElement.position)
+        .shadow(radius: 5)
         .gesture(
             DragGesture()
                 .onChanged({ newValue in
