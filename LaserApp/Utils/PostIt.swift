@@ -23,15 +23,15 @@ struct PostItView: View {
         VStack {
             HStack{
                 Spacer()
-                Image(systemName: "line.horizontal.3")
+                Image(systemName: "ellipsis")
                     .font(.system(size: 15))
                     .padding(.top, 30)
-                    .padding(.trailing,20)
+                    .padding(.trailing, 15)
             }
             TextEditor(text: $workspaceElement.content)
+                .font(.system(size: 10).bold())
                 .frame(height: 100)
                 .padding(8)
-                
                 
         }
         .foregroundColor(Color("gray"))
@@ -39,6 +39,7 @@ struct PostItView: View {
         .frame(width: 120, height: 120)
         .cornerRadius(20)
         .position(workspaceElement.position)
+        .shadow(radius: 5)
         .gesture(
             DragGesture()
             .onChanged({ newValue in
