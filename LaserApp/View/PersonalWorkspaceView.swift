@@ -76,7 +76,11 @@ struct PersonalWorkspaceView: View {
                 }
             }// HStack
             HStack {
-            let miniatureNamesList: [String] = ["postItMiniature", "notesMiniature", "videoEmbedMiniature", "webLinkMiniature", "imageMiniature"]
+            let miniatureNamesList: [String] = ["postItMiniature",
+                                                "notesMiniature",
+                                                "videoEmbedMiniature",
+                                                "webLinkMiniature",
+                                                "imageMiniature"]
                 
                 Text("Add Stuff:")
                     .padding(.horizontal, 10)
@@ -133,7 +137,7 @@ struct PersonalWorkspaceView: View {
                             Image(systemName: "photo.fill")
                                 .font(.system(size: 20).bold())
                                 .padding(.trailing, 10)
-                        case "linkMiniature":
+                        case "webLinkMiniature":
                             Image(systemName: "link")
                                 .font(.system(size: 20).bold())
                                 .padding(.trailing, 10)
@@ -154,7 +158,28 @@ struct PersonalWorkspaceView: View {
             .padding(.horizontal, 50)
             .padding(.bottom, 15)
         } // VStack
-            RightSideItems(type: .workspace)
+            RightSideItems(type: .workspace) { mockup in
+                switch mockup {
+                case "imageSample":
+                    workspaceElementList.append(
+                        WorkspaceElement(date: Date(),
+                                         position: CGPoint(x: 50, y: 50),
+                                         text: "imageSample",
+                                         type: .image
+                        )
+                    )
+                case "postitSample":
+                    workspaceElementList.append(
+                        WorkspaceElement(date: Date(),
+                                         position: CGPoint(x: 50, y: 50),
+                                         text: "Mockup de post it compartilhado",
+                                         type: .postIt
+                        )
+                    )
+                default:
+                    print(mockup + " not recognizable as shared material type")
+                }
+            }
         }
         .onDisappear {
             saveScreen(workspaceElementeListUpdated: workspaceElementList)
