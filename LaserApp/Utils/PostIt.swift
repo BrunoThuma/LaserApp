@@ -101,6 +101,9 @@ struct PostItView: View {
             }
                 
         }
+        .onHover { over in
+            showMenu.toggle()
+        }
         .foregroundColor(Color("gray"))
         .zIndex(workspaceElement.zIndex)
         .background(Color("yellow"))
@@ -108,9 +111,7 @@ struct PostItView: View {
         .cornerRadius(20)
         .position(workspaceElement.position)
         .shadow(radius: 5)
-        .onHover { over in
-            showMenu.toggle()
-        }
+        
     }
 }
 

@@ -99,7 +99,10 @@ struct WebLinkView: View {
                     .fixedSize()
                     .padding(.leading,17)
             }
-        }.fixedSize()
+        }.onHover { _ in
+            showMenu.toggle()
+        }
+        .fixedSize()
         .padding(17)
         .zIndex(workspaceElement.zIndex)
         .background(Color("gray"))
@@ -107,9 +110,7 @@ struct WebLinkView: View {
         .cornerRadius(7)
         .position(self.workspaceElement.position)
         .shadow(radius: 5)
-        .onHover { _ in
-            showMenu.toggle()
-        }
+        
     }
 }
 
