@@ -11,6 +11,7 @@ import SwiftUI
 
 struct NotesView: View {
     @Binding var workspaceElement: WorkspaceElement
+    @State var showMenu: Bool = false
     var deleteItem: (UUID) -> Void
     
     func dateToString(date: Date) -> String {
@@ -52,7 +53,6 @@ struct NotesView: View {
             VStack{
                 HStack{
                     Spacer()
-                    if workspaceElement.showMenu {
                         Menu{
                         
                             
@@ -106,35 +106,30 @@ struct NotesView: View {
                                 Label("Delete", systemImage: "trash")
                             }
                         } label: {
-                            Image(systemName: "ellipsis")
-                                .font(.system(size: 15))
+                            if showMenu {
+                                Image(systemName: "ellipsis")
+                                    .font(.system(size: 18))
+                            }
                         }
                         .foregroundColor(.black)
                         .menuStyle(BorderlessButtonMenuStyle(showsMenuIndicator: false))
                         .fixedSize()
                         .padding(.top, 28)
                         .padding(.trailing,12)
-                    }
+                    
                 }
                 Spacer()
             }
         }
+        .onHover { over in
+            showMenu.toggle()
+        }
         .frame(width: 150, height: 180)
+        .zIndex(workspaceElement.zIndex)
         .background(Color("white"))
         .cornerRadius(20)
         .position(workspaceElement.position)
         .shadow(radius: 5)
-        .gesture(
-            DragGesture()
-            .onChanged({ newValue in
-                if !workspaceElement.fixed{
-                    self.workspaceElement.position = newValue.location
-                }
-            })
-        )
-        .onHover { over in
-            workspaceElement.showMenu = over
-        }
     }
     
 }

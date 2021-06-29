@@ -11,6 +11,8 @@ struct VideoView: View {
     @Binding var workspaceElement: WorkspaceElement
     var deleteItem: (UUID) -> Void
     
+    @State var showMenu = false
+    
     var body: some View {
         ZStack{
             
@@ -63,7 +65,6 @@ struct VideoView: View {
             VStack{
                 HStack{
                     Spacer()
-                    if workspaceElement.showMenu {
                         Menu {
                        
                             Menu {
@@ -117,35 +118,30 @@ struct VideoView: View {
                             }
                         
                         } label: {
-                            Image(systemName: "ellipsis")
-                                .font(.system(size: 15))
+                            if showMenu {
+                                Image(systemName: "ellipsis")
+                                    .font(.system(size: 18))
+                            }
                         }
                         .menuStyle(BorderlessButtonMenuStyle(showsMenuIndicator: false))
                         .fixedSize()
                         .padding(.top, 3)
                         .padding(.trailing,5)
-                    }
                 }
                 Spacer()
             }
             
         
         }
+        .onHover { over in
+            showMenu.toggle()
+        }
         .frame(width: 325, height: 200)
         .background(Color("turquoise"))
         .cornerRadius(16)
         .position(self.workspaceElement.position)
         .shadow(radius: 5)
-        .gesture(
-        DragGesture()
-            .onChanged({ newValue in
-                if !workspaceElement.fixed {
-                    self.workspaceElement.position = newValue.location
-                }
-            }))
-        .onHover { over in
-            workspaceElement.showMenu = over
-        }
+        .zIndex(workspaceElement.zIndex)
     }
 }
 

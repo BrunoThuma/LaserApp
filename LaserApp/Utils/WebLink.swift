@@ -9,6 +9,7 @@ import SwiftUI
 
 struct WebLinkView: View {
     @Binding var workspaceElement: WorkspaceElement
+    @State var showMenu = false
     var deleteItem: (UUID) -> Void
     var fixedSize: Bool = false
     
@@ -36,7 +37,6 @@ struct WebLinkView: View {
             }.padding(.trailing, 32)
             HStack{
                 Spacer()
-                if workspaceElement.showMenu {
                     Menu {
                    
                         Menu {
@@ -90,30 +90,25 @@ struct WebLinkView: View {
                         }
                     
                     } label: {
-                        Image(systemName: "ellipsis")
-                            .font(.system(size: 15))
+                        if showMenu {
+                            Image(systemName: "ellipsis")
+                                .font(.system(size: 18))
+                        }
                     }
                     .menuStyle(BorderlessButtonMenuStyle(showsMenuIndicator: false))
                     .fixedSize()
                     .padding(.leading,17)
-                }
             }
         }.fixedSize()
         .padding(17)
+        .zIndex(workspaceElement.zIndex)
         .background(Color("gray"))
         .opacity(0.75)
         .cornerRadius(7)
         .position(self.workspaceElement.position)
         .shadow(radius: 5)
-        .gesture(
-            DragGesture()
-                .onChanged({ newValue in
-                    if !workspaceElement.fixed {
-                        self.workspaceElement.position = newValue.location
-                    }
-                }))
         .onHover { _ in
-            workspaceElement.showMenu.toggle()
+            showMenu.toggle()
         }
     }
 }
