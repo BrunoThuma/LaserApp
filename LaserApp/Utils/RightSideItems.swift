@@ -141,8 +141,8 @@ struct RightSideItems: View {
     }
 }
 
-//struct RightSideItems_Previews: PreviewProvider {
-//    static var previews: some View {
-//        RightSideItems()
-//    }
-//}
+struct RightSideItems_Previews: PreviewProvider {
+    static var previews: some View {
+        RightSideItems(type: .workspace)
+    }
+}

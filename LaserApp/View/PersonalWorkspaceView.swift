@@ -47,7 +47,8 @@ struct PersonalWorkspaceView: View {
     }
     
     var body: some View {
-        return VStack {
+        return HStack {
+            VStack {
             if workspaceElementList.count <= 0 {
                 Spacer()
                 Text(workspaceName)
@@ -121,6 +122,9 @@ struct PersonalWorkspaceView: View {
             .padding(.bottom, 15)
 //            .frame(maxWidth: .infinity)
         } // VStack
+            
+            RightSideItems(type: .workspace)
+        }
         .onDisappear {
             saveScreen(workspaceElementeListUpdated: workspaceElementList)
             
