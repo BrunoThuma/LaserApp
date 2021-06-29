@@ -88,6 +88,8 @@ struct HomeView: View {
     @State var searchText = ""
     @State var searchTag = ""
     
+    var addPersonalWorkspace: (PersonalWorkspace) -> Void = {_ in ()}
+    
     struct Header: View {
         @Binding var searchText: String
         @Binding var searchTag: String
@@ -126,15 +128,66 @@ struct HomeView: View {
     struct PersonalWorkspaceSection: View {
         var data: [PersonalWorkspaceCardData]
         
+        @State var menuIsOnHover = false
+        
         let columns: [GridItem] =
                  Array(repeating: .init(.flexible()), count: 2)
         
+        var addPersonalWorkspace: (PersonalWorkspace) -> Void = {_ in ()}
+        
         var body: some View {
             VStack(alignment: .leading) {
-                HStack {
+                HStack(alignment: .center) {
                     Text("Workspaces Pessoais")
                         .font(.system(size: 48, weight: .regular))
                         .padding(.vertical, 55)
+                    
+                        Menu {
+                            Menu {
+                                Button(action: {
+                                    addPersonalWorkspace(PersonalWorkspace(name: "UX Design"))
+                                }) {
+                                    Label("UX Design", systemImage: "globe")
+                                }
+                                Button(action: {
+                                    addPersonalWorkspace(PersonalWorkspace(name: "Design Editorial"))
+                                }) {
+                                    Label("Design Editorial", systemImage: "globe")
+                                }
+                                Button(action: {
+                                    addPersonalWorkspace(PersonalWorkspace(name: "Design de Interfaces"))
+                                }) {
+                                    Label("Design de Interfaces", systemImage: "globe")
+                                }
+                                Button(action: {
+                                    addPersonalWorkspace(PersonalWorkspace(name: "Leitura e Escrita Acadêmica"))
+                                }) {
+                                    Label("Leitura e Escrita Acadêmica", systemImage: "globe")
+                                }
+                            } label: {
+                                Label("Duplicate from", systemImage: "square.and.arrow.up")
+                            }
+                            .menuStyle(BorderlessButtonMenuStyle(showsMenuIndicator: false))
+                            .fixedSize()
+                            
+                            Button(action: {
+                                addPersonalWorkspace(PersonalWorkspace(name: "New Workspace"))
+                            }, label: {
+                                Label("Create new workspace", systemImage: "globe")
+                            })
+                            
+                        } label: {
+                            Text(menuIsOnHover ? "􀁍" : "􀁌")
+                                .font(.system(size: 28, weight: .regular))
+                        }
+                        .onHover { over in
+                            menuIsOnHover = over
+                        }
+                        .menuStyle(BorderlessButtonMenuStyle(showsMenuIndicator: false))
+                        .fixedSize()
+                        .padding(.top, 3)
+                        .padding(.trailing,5)
+//                    }
                     
                     Spacer()
                 }
@@ -161,7 +214,7 @@ struct HomeView: View {
                      
                     DashboardSection(backlogData: kanbanBacklogSampleData, todoData: kanbanTodoSampleData, inProgressData: kanbanInProgressSampleData)
                     
-                    PersonalWorkspaceSection(data: personalWorkspaceCardSampleData)
+                    PersonalWorkspaceSection(data: personalWorkspaceCardSampleData, addPersonalWorkspace: addPersonalWorkspace)
                 }
                 
                 Spacer()

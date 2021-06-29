@@ -19,11 +19,10 @@ struct LaserAppApp: App {
                     PersonalWorkspace(name: "ux - gonzatto"),
                 ],
                 sharedWorkspaces: [
-                    SharedWorkspace(name: "Eletromagnetismo"),
+                    SharedWorkspace(name: "UX Design"),
                     SharedWorkspace(name: "Design Editorial"),
                     SharedWorkspace(name: "Design de Interface"),
-                    SharedWorkspace(name: "Leitura e Escrita"),
-                    SharedWorkspace(name: "Redes de Computadores"),
+                    SharedWorkspace(name: "Leitura e Escrita Acadêmica"),
                 ]
             ) // Exemplo de Workspaces
         }

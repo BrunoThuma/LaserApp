@@ -25,5 +25,6 @@ struct WorkspaceElement: Codable, Identifiable {
         case note
         case video
         case image
+        case webLink
     }
 }

@@ -8,17 +8,21 @@
 import SwiftUI
 
 struct ContentView: View {
-    var personalWorkspaces: [PersonalWorkspace] = []
-    var sharedWorkspaces: [SharedWorkspace] = []
+    @State var personalWorkspaces: [PersonalWorkspace] = []
+    @State var sharedWorkspaces: [SharedWorkspace] = []
     
     func toggleSidebar() {
         NSApp.keyWindow?.firstResponder?.tryToPerform(#selector(NSSplitViewController.toggleSidebar(_:)), with: nil)
     }
     
+    func addPersonalWorkspace(newWorkspace: PersonalWorkspace) {
+        personalWorkspaces.append(newWorkspace)
+    }
+    
     var body: some View {
         NavigationView {
             List {
-                NavigationLink(destination: HomeView()) {
+                NavigationLink(destination: HomeView(addPersonalWorkspace: addPersonalWorkspace)) {
                     Text("􀎞 Home")
                         .font(.system(size: 12.82, weight: .bold))
                 }
@@ -40,7 +44,7 @@ struct ContentView: View {
                 }
             }
             
-            HomeView() // A placeholder to show before selection.
+            HomeView(addPersonalWorkspace: addPersonalWorkspace) // A placeholder to show before selection.
         }
         .toolbar {
             ToolbarItem(placement: .navigation) {

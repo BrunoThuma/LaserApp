@@ -66,6 +66,8 @@ struct PersonalWorkspaceView: View {
                                 VideoView(workspaceElement: $workspaceElementList[i], deleteItem: deleteElement)
                             case .image:
                                 ImageView(workspaceElement: $workspaceElementList[i], deleteItem: deleteElement)
+                            case .webLink:
+                                WebLinkView(workspaceElement: $workspaceElementList[i], deleteItem: deleteElement)
                             }
                         } else {
                             Group {}
@@ -74,11 +76,7 @@ struct PersonalWorkspaceView: View {
                 }
             }// HStack
             HStack {
-                let miniatureNamesList: [String] = ["postItMiniature",
-                                                    "notesMiniature",
-                                                    "linkMiniature",
-                                                    "videoEmbedMiniature",
-                                                    "imageMiniature"]
+            let miniatureNamesList: [String] = ["postItMiniature", "notesMiniature", "videoEmbedMiniature", "webLinkMiniature", "imageMiniature"]
                 
                 Text("Add Stuff:")
                     .padding(.horizontal, 10)
@@ -112,6 +110,13 @@ struct PersonalWorkspaceView: View {
                                   date: Date(),
                                   position: CGPoint(x: 400, y: 400),
                                   type: .image)
+                            )
+                        case "webLinkMiniature":
+                            workspaceElementList.append(
+                              WorkspaceElement(
+                                  date: Date(),
+                                  position: CGPoint(x: 400, y: 400),
+                                  type: .webLink)
                             )
                         default:
                           print("Default case on toolbar switch")
