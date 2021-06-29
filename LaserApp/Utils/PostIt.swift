@@ -19,6 +19,8 @@ extension NSTextView {
 struct PostItView: View {
     @Binding var workspaceElement: WorkspaceElement
     var deleteItem: (UUID) -> Void
+    
+    @State var showMenu = false
 
     var body: some View {
         ZStack {
@@ -32,7 +34,6 @@ struct PostItView: View {
             VStack{
                 HStack{
                     Spacer()
-                    if workspaceElement.showMenu {
                         Menu{
                         
                             
@@ -86,36 +87,31 @@ struct PostItView: View {
                                 Label("Delete", systemImage: "trash")
                             }
                         } label: {
-                            Image(systemName: "ellipsis")
-                                .font(.system(size: 15))
+                            if showMenu {
+                                Image(systemName: "ellipsis")
+                                    .font(.system(size: 18))
+                            }
                         }
                         .menuStyle(BorderlessButtonMenuStyle(showsMenuIndicator: false))
                         .fixedSize()
                         .padding(.top, 10)
                         .padding(.trailing,12)
-                    }
                 }
                 Spacer()
             }
                 
         }
+        .onHover { over in
+            showMenu.toggle()
+        }
         .foregroundColor(Color("gray"))
+        .zIndex(workspaceElement.zIndex)
         .background(Color("yellow"))
         .frame(width: 120, height: 120)
         .cornerRadius(20)
         .position(workspaceElement.position)
         .shadow(radius: 5)
-        .gesture(
-            DragGesture()
-            .onChanged({ newValue in
-                if !workspaceElement.fixed{
-                    self.workspaceElement.position = newValue.location
-                }
-            })
-        )
-        .onHover { over in
-            workspaceElement.showMenu = over
-        }
+        
     }
 }
 

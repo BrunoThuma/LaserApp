@@ -56,31 +56,35 @@ struct PersonalWorkspaceView: View {
             } else {
                 ZStack {
                     ForEach(Array(workspaceElementList.enumerated()), id: \.0) { i, element in
-                        if element.showElement {
-                            switch element.type {
-                            case .postIt:
-                                PostItView(workspaceElement: $workspaceElementList[i], deleteItem: deleteElement)
-                            case .note:
-                                NotesView(workspaceElement: $workspaceElementList[i], deleteItem: deleteElement)
-                            case .video:
-                                VideoView(workspaceElement: $workspaceElementList[i], deleteItem: deleteElement)
-                            case .image:
-                                ImageView(workspaceElement: $workspaceElementList[i], deleteItem: deleteElement)
-                            case .webLink:
-                                WebLinkView(workspaceElement: $workspaceElementList[i], deleteItem: deleteElement)
+                        Group {
+                            if element.showElement {
+                                switch element.type {
+                                case .postIt:
+                                    PostItView(workspaceElement: $workspaceElementList[i], deleteItem: deleteElement)
+                                case .note:
+                                    NotesView(workspaceElement: $workspaceElementList[i], deleteItem: deleteElement)
+                                case .video:
+                                    VideoView(workspaceElement: $workspaceElementList[i], deleteItem: deleteElement)
+                                case .webLink:
+                                    WebLinkView(workspaceElement: $workspaceElementList[i], deleteItem: deleteElement)
+                                }
                             }
-                        } else {
-                            Group {}
                         }
+                        .gesture(
+                            DragGesture()
+                            .onChanged({ newValue in
+                                workspaceElementList[i].zIndex = workspaceElementList.highestZIndex+1
+                                if !workspaceElementList[i].fixed{
+                                    self.workspaceElementList[i].position = newValue.location
+                                }
+                            })
+                        )
+                        
                     }
                 }
             }// HStack
             HStack {
-            let miniatureNamesList: [String] = ["postItMiniature",
-                                                "notesMiniature",
-                                                "videoEmbedMiniature",
-                                                "webLinkMiniature",
-                                                "imageMiniature"]
+                let miniatureNamesList: [String] = ["postItMiniature", "notesMiniature", "videoEmbedMiniature", "webLinkMiniature"]
                 
                 Text("Add Stuff:")
                     .padding(.horizontal, 10)

@@ -9,7 +9,7 @@ struct WorkspaceElement: Codable, Identifiable {
     let id: UUID
     var fixed: Bool = false
     var showElement: Bool = true
-    var showMenu: Bool = false
+    var zIndex: Double = 0
     
     init(id: UUID = UUID(), date: Date, position: CGPoint, text: String = "", type: ElementType) {
         self.position = position
@@ -26,5 +26,17 @@ struct WorkspaceElement: Codable, Identifiable {
         case video
         case image
         case webLink
+    }
+}
+
+extension Array where Element == WorkspaceElement {
+    var highestZIndex: Double {
+        guard !self.isEmpty else {
+            return 0
+        }
+        
+        return self.map { element in
+            element.zIndex
+        }.max()!
     }
 }
