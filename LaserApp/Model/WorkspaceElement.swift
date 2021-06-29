@@ -24,6 +24,7 @@ struct WorkspaceElement: Codable, Identifiable {
         case postIt
         case note
         case video
+        case webLink
         
     }
 }
