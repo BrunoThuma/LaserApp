@@ -23,6 +23,7 @@
 		0CC50786267E3D560004040C /* PersonalWorkspaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC50782267E3D560004040C /* PersonalWorkspaceView.swift */; };
 		4B54B7AB2683626600D4D2C0 /* EmbeddedVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B54B7A92683626600D4D2C0 /* EmbeddedVideo.swift */; };
 		4B54B7AC2683626600D4D2C0 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B54B7AA2683626600D4D2C0 /* Video.swift */; };
+		5E04365C268B46AB0098EBC9 /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E04365B268B46AB0098EBC9 /* ImageView.swift */; };
 		5E805AF4267CEB4A00B39A6E /* LaserAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E805AF3267CEB4A00B39A6E /* LaserAppApp.swift */; };
 		5E805AF8267CEB4B00B39A6E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E805AF7267CEB4B00B39A6E /* Assets.xcassets */; };
 		5E805AFB267CEB4B00B39A6E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E805AFA267CEB4B00B39A6E /* Preview Assets.xcassets */; };
@@ -48,6 +49,7 @@
 		0CC50782267E3D560004040C /* PersonalWorkspaceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalWorkspaceView.swift; sourceTree = "<group>"; };
 		4B54B7A92683626600D4D2C0 /* EmbeddedVideo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmbeddedVideo.swift; sourceTree = "<group>"; };
 		4B54B7AA2683626600D4D2C0 /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
+		5E04365B268B46AB0098EBC9 /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
 		5E805AF0267CEB4A00B39A6E /* Laser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Laser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E805AF3267CEB4A00B39A6E /* LaserAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaserAppApp.swift; sourceTree = "<group>"; };
 		5E805AF7267CEB4B00B39A6E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 				0C57C70526860B3B002DD4E5 /* RightSideItems.swift */,
 				0C4C4B5B2687B24F00321E28 /* PersonalGoals.swift */,
 				0C997C4C2687C321006C4F2A /* SharedWithYou.swift */,
+				5E04365B268B46AB0098EBC9 /* ImageView.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -225,6 +228,7 @@
 				0CC5077C267E3D4E0004040C /* PersonalWorkspace.swift in Sources */,
 				5EDDE0EA268217FB00722604 /* PostIt.swift in Sources */,
 				0CC50785267E3D560004040C /* ContentView.swift in Sources */,
+				5E04365C268B46AB0098EBC9 /* ImageView.swift in Sources */,
 				0C57C70626860B3B002DD4E5 /* RightSideItems.swift in Sources */,
 				0CC50786267E3D560004040C /* PersonalWorkspaceView.swift in Sources */,
 				5EDDE0EC2682298700722604 /* Notes.swift in Sources */,

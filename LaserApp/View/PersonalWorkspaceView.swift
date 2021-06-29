@@ -64,6 +64,8 @@ struct PersonalWorkspaceView: View {
                                 NotesView(workspaceElement: $workspaceElementList[i], deleteItem: deleteElement)
                             case .video:
                                 VideoView(workspaceElement: $workspaceElementList[i], deleteItem: deleteElement)
+                            case .image:
+                                ImageView(workspaceElement: $workspaceElementList[i], deleteItem: deleteElement)
                             }
                         } else {
                             Group {}
@@ -72,7 +74,11 @@ struct PersonalWorkspaceView: View {
                 }
             }// HStack
             HStack {
-                let miniatureNamesList: [String] = ["postItMiniature", "notesMiniature", "videoEmbedMiniature"]
+                let miniatureNamesList: [String] = ["postItMiniature",
+                                                    "notesMiniature",
+                                                    "linkMiniature",
+                                                    "videoEmbedMiniature",
+                                                    "imageMiniature"]
                 
                 Text("Add Stuff:")
                     .padding(.horizontal, 10)
@@ -100,18 +106,40 @@ struct PersonalWorkspaceView: View {
                                   position: CGPoint(x: 400, y: 400),
                                   type: .video)
                             )
+                        case "imageMiniature":
+                            workspaceElementList.append(
+                              WorkspaceElement(
+                                  date: Date(),
+                                  position: CGPoint(x: 400, y: 400),
+                                  type: .image)
+                            )
                         default:
                           print("Default case on toolbar switch")
                         }
                         saveScreen(workspaceElementeListUpdated: workspaceElementList)
                         reloadScreen()
                     }) {
-                        Image(miniatureName)
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(height: 30)
-                            .padding(.horizontal, 10)
-                            .padding(.vertical, 5)
+                        switch miniatureName {
+                        case "videoEmbedMiniature":
+                            Image(systemName: "play.rectangle.fill")
+                                .font(.system(size: 20).bold())
+                                .padding(.trailing, 10)
+                        case "imageMiniature":
+                            Image(systemName: "photo.fill")
+                                .font(.system(size: 20).bold())
+                                .padding(.trailing, 10)
+                        case "linkMiniature":
+                            Image(systemName: "link")
+                                .font(.system(size: 20).bold())
+                                .padding(.trailing, 10)
+                        default:
+                            Image(miniatureName)
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(height: 30)
+                                .padding(.horizontal, 10)
+                                .padding(.vertical, 5)
+                        }
                             
                     }.buttonStyle(PlainButtonStyle()) // Button
                 }// ForEach
@@ -120,14 +148,11 @@ struct PersonalWorkspaceView: View {
             .cornerRadius(8)
             .padding(.horizontal, 50)
             .padding(.bottom, 15)
-//            .frame(maxWidth: .infinity)
         } // VStack
-            
             RightSideItems(type: .workspace)
         }
         .onDisappear {
             saveScreen(workspaceElementeListUpdated: workspaceElementList)
-            
         }
         .onAppear { reloadScreen() }
     }
