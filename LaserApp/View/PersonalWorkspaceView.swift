@@ -12,19 +12,23 @@ extension String {
 }
 
 struct PersonalWorkspaceView: View {
-    @State var workspaceName: String
+    var data: PersonalWorkspace
+    
+    @State var workspaceName: String = ""
     @State var workspaceElementList: [WorkspaceElement] = []
+    
+    var onTitleChange: (String, UUID) -> Void = {_, _ in ()}
     
     
     func saveScreen(workspaceElementeListUpdated: [WorkspaceElement]) {
         UserDefaults.standard.setValue(
             try? PropertyListEncoder().encode(workspaceElementeListUpdated),
-            forKey: .elementListKey + workspaceName)
+            forKey: .elementListKey + data.name)
     }
     
     func reloadScreen() {
         // Guard -> condicoes separadas por virgulas, caso nil entra no else
-        guard let data = UserDefaults.standard.value(forKey: .elementListKey + workspaceName) as? Data,
+        guard let data = UserDefaults.standard.value(forKey: .elementListKey + data.name) as? Data,
               let elementList = try? PropertyListDecoder().decode([WorkspaceElement].self, from: data) else  {
             
             self.workspaceElementList = []
@@ -61,7 +65,7 @@ struct PersonalWorkspaceView: View {
         return ZStack {
             VStack {
                 HStack{
-                    TextField(workspaceName, text: $workspaceName)
+                    TextField(data.name, text: $workspaceName)
                         .font(Font.system(size: 15))
                         .textFieldStyle(PlainTextFieldStyle())
                         .fixedSize()
@@ -69,6 +73,9 @@ struct PersonalWorkspaceView: View {
                         .background(Color("pink"))
                         .cornerRadius(18)
                         .padding()
+                        .onChange(of: workspaceName) { newValue in
+                            onTitleChange(newValue, data.id)
+                        }
                         
                     Spacer()
                 }
@@ -99,7 +106,7 @@ struct PersonalWorkspaceView: View {
                             DragGesture()
                             .onChanged({ newValue in
                                 workspaceElementList[i].zIndex = workspaceElementList.highestZIndex+1
-                                if !workspaceElementList[i].fixed{
+                                if !workspaceElementList[i].fixed {
                                     self.workspaceElementList[i].position = newValue.location
                                 }
                             })
@@ -234,12 +241,15 @@ struct PersonalWorkspaceView: View {
         .onDisappear {
             saveScreen(workspaceElementeListUpdated: workspaceElementList)
         }
-        .onAppear { reloadScreen() }
+        .onAppear {
+            reloadScreen()
+            workspaceName = data.name
+        }
     }
 }
 
-struct PersonalWorkspaceView_Previews: PreviewProvider {
-    static var previews: some View {
-        PersonalWorkspaceView(workspaceName: "Personal Workspace View")
-    }
-}
+//struct PersonalWorkspaceView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        PersonalWorkspaceView(workspaceName: "Personal Workspace View")
+//    }
+//}

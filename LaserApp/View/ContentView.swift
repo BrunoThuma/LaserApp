@@ -19,6 +19,24 @@ struct ContentView: View {
         personalWorkspaces.append(newWorkspace)
     }
     
+    func changeTitle(_ newTitle: String, _ id: UUID) {
+        let index = personalWorkspaces.firstIndex { item in
+            if item.id == id {
+                return true
+            }
+            
+            return false
+        }
+        
+        var newArr: [PersonalWorkspace] = []
+        
+        newArr = personalWorkspaces.map { $0 }
+        
+        newArr[index!].name = newTitle
+        
+        personalWorkspaces = newArr
+    }
+    
     var body: some View {
         NavigationView {
             List {
@@ -28,7 +46,7 @@ struct ContentView: View {
                 }
                 Section(header: Text("Sua Workspace")) {
                     ForEach(personalWorkspaces) { workspace in
-                        NavigationLink(destination: PersonalWorkspaceView(workspaceName: workspace.name)) {
+                        NavigationLink(destination: PersonalWorkspaceView(data: workspace, onTitleChange: changeTitle)) {
                             Text("􀫗 \(workspace.name)")
                                 .font(.system(size: 12.82, weight: .regular))
                         }
