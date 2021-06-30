@@ -33,7 +33,7 @@ struct PersonalGoals: View {
                     .foregroundColor(Color("black"))
                 
                 Rectangle().frame(width: 120*CGFloat(value), height: 3)
-                    .foregroundColor(Color("purple"))
+                    .foregroundColor(Color("pink"))
                     .animation(.linear)
             }
             .cornerRadius(45.0)
@@ -52,7 +52,7 @@ struct PersonalGoals: View {
                 HStack(alignment: .center) {
                     Circle()
                         .strokeBorder(data.done ?  Color.clear : Color.white, lineWidth: 0.5)
-                        .background(Circle().fill(data.done ? Color.purple : Color.clear))
+                        .background(Circle().fill(data.done ? Color("pink") : Color("gray")))
                         .frame(width: 10, height: 10)
                         .padding(.trailing, 5)
                     
