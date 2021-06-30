@@ -101,7 +101,7 @@ struct PersonalGoals: View {
     var body: some View {
         Group {
             VStack(alignment: .leading) {
-                Text("Suas metas pessoais")
+                Text("Personal Goals")
                     .font(.system(size: 16, weight: .bold))
                     .padding(.bottom, 10)
                 
