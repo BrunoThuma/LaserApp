@@ -143,14 +143,14 @@ struct PersonalWorkspaceView: View {
                                 workspaceElementList.append(
                                   WorkspaceElement(
                                       date: Date(),
-                                      position: CGPoint(x: 100, y: 100),
+                                      position: CGPoint(x: 400, y: 400),
                                       type: .postIt)
                                 )
                             case "notesMiniature":
                                 workspaceElementList.append(
                                   WorkspaceElement(
                                       date: Date(),
-                                      position: CGPoint(x: 100, y: 100),
+                                      position: CGPoint(x: 400, y: 400),
                                       type: .note)
                                 )
                             case "videoEmbedMiniature":
