@@ -19,8 +19,9 @@ struct Hashtag: View {
     var body: some View {
         Group {
             Text("#\(data.title)")
-                .font(.system(size: 10, weight: .regular))
-                .foregroundColor(data.color == "yellow" ? Color("gray") : .white)
+                .font(.system(size: 9, weight: .regular))
+                .foregroundColor((data.color == "yellow" || data.color == "turquoise") ? Color("gray") : .white)
+                .lineLimit(1)
         }
         .padding(5)
         .background(Color(data.color))
