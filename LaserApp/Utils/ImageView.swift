@@ -83,16 +83,9 @@ struct ImageView: View {
         }
         .frame(width: 150, height: 180)
         .cornerRadius(20)
-        .position(workspaceElement.position)
+        .position(self.workspaceElement.position)
         .shadow(radius: 5)
-        .gesture(
-            DragGesture()
-            .onChanged({ newValue in
-                if !workspaceElement.fixed{
-                    self.workspaceElement.position = newValue.location
-                }
-            })
-        )
+        .zIndex(workspaceElement.zIndex)
     }
 }
 
