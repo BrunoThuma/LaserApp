@@ -36,7 +36,7 @@ struct VideoView: View {
                                     HStack{
                                         Image(systemName: "link")
                                             .font(Font.body.weight(.heavy))
-                                        TextField("Cole o link do vídeo aqui",
+                                        TextField("Paste your link here",
                                                   text: $workspaceElement.content)
                                             .textFieldStyle(PlainTextFieldStyle())
                                             .fixedSize()
