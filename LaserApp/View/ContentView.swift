@@ -26,7 +26,7 @@ struct ContentView: View {
                     Text("􀎞 Home")
                         .font(.system(size: 12.82, weight: .bold))
                 }
-                Section(header: Text("Sua Workspace")) {
+                Section(header: Text("Your Workspaces")) {
                     ForEach(personalWorkspaces) { workspace in
                         NavigationLink(destination: PersonalWorkspaceView(workspaceName: workspace.name)) {
                             Text("􀫗 \(workspace.name)")
@@ -34,7 +34,7 @@ struct ContentView: View {
                         }
                     }
                 }
-                Section(header: Text("Workspaces Compartilhadas")) {
+                Section(header: Text("Shared Workspaces")) {
                     ForEach(sharedWorkspaces) { workspace in
                         NavigationLink(destination: SharedWorkspaceView(workspaceName: workspace.name)) {
                             Text("􀆪 \(workspace.name)")

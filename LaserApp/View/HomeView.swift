@@ -22,7 +22,7 @@ let kanbanTodoSampleData = KanbanPartData(title: "To do", items: [
     KanbanItemData(name: "Simulação analógica", description: "Simular o circuito X"),
 ]);
 
-let kanbanInProgressSampleData = KanbanPartData(title: "Em progresso", items: [
+let kanbanInProgressSampleData = KanbanPartData(title: "Ongoing", items: [
     KanbanItemData(name: "Simulação analógica", description: "Simular o circuito X"),
     KanbanItemData(name: "Simulação analógica", description: "Simular o circuito X"),
     KanbanItemData(name: "Simulação analógica", description: "Simular o circuito X"),
@@ -102,7 +102,7 @@ struct HomeView: View {
                     searchText = text
                 })
                     .padding(.trailing, 30)
-                Dropdown(options: tagOptions, placeholder: "Filtrar") { tag in
+                Dropdown(options: tagOptions, placeholder: "Filter") { tag in
                     searchTag = tag
                 }
             }
@@ -138,7 +138,7 @@ struct HomeView: View {
         var body: some View {
             VStack(alignment: .leading) {
                 HStack(alignment: .center) {
-                    Text("Workspaces Pessoais")
+                    Text("Personal Workspaces")
                         .font(.system(size: 48, weight: .regular))
                         .padding(.vertical, 55)
                     

@@ -178,7 +178,7 @@ struct PersonalWorkspaceView: View {
                     workspaceElementList.append(
                         WorkspaceElement(date: Date(),
                                          position: CGPoint(x: 50, y: 50),
-                                         text: "Mockup de post it compartilhado",
+                                         text: "Ler texto 'User Experience and Experience Design', Marc Hassenahl'",
                                          type: .postIt
                         )
                     )

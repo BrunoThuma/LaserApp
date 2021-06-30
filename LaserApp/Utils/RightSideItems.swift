@@ -102,7 +102,7 @@ struct RightSideItems: View {
         var body: some View {
             Group {
                 VStack(alignment: .leading) {
-                    Text("Suas Hashtags")
+                    Text("Your Hashtags")
                         .font(.system(size: 16, weight: .bold))
                         .padding(.bottom, 10)
                     

@@ -13,12 +13,12 @@ struct SharedWithYou: View {
     var body: some View {
         Group {
             VStack(alignment: .leading) {
-                Text("Compartilhados com você")
+                Text("Shared with you")
                     .font(.system(size: 16, weight: .bold))
                     .padding(.bottom, 10)
                 
                 Group {
-                    Text("@Ale Lacerda compartilhou este postit")
+                    Text("@Ale Lacerda shared this postit")
                         .font(.system(size: 12, weight: .semibold))
                         .padding(.bottom, 8)
                     
@@ -43,7 +43,7 @@ struct SharedWithYou: View {
                     .padding(.vertical, 20)
                 
                 Group {
-                    Text("@Gustavo Kuma compartilhou esta imagem")
+                    Text("@Gustavo Kuma shared this imagem")
                         .font(.system(size: 12, weight: .semibold))
                         .padding(.bottom, 8)
                     
