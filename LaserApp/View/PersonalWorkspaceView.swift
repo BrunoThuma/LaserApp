@@ -12,8 +12,9 @@ extension String {
 }
 
 struct PersonalWorkspaceView: View {
-    var workspaceName: String
+    @State var workspaceName: String
     @State var workspaceElementList: [WorkspaceElement] = []
+    
     
     func saveScreen(workspaceElementeListUpdated: [WorkspaceElement]) {
         UserDefaults.standard.setValue(
@@ -46,14 +47,36 @@ struct PersonalWorkspaceView: View {
         workspaceElementList[index!].showElement = false
     }
     
+    func countElements() -> Int {
+        var count: Int = 0
+        for element in workspaceElementList {
+            if element.showElement{
+                count += 1
+            }
+        }
+        return count
+    }
+    
     var body: some View {
-        return HStack {
+        return ZStack {
             VStack {
-            if workspaceElementList.count <= 0 {
+                HStack{
+                    TextField(workspaceName, text: $workspaceName)
+                        .font(Font.system(size: 15))
+                        .textFieldStyle(PlainTextFieldStyle())
+                        .fixedSize()
+                        .padding(5)
+                        .background(Color("pink"))
+                        .cornerRadius(18)
+                        .padding()
+                        
+                    Spacer()
+                }
                 Spacer()
-                Text(workspaceName)
-                Spacer()
-            } else {
+            }
+            
+            
+            if countElements() != 0 {
                 ZStack {
                     ForEach(Array(workspaceElementList.enumerated()), id: \.0) { i, element in
                         Group {
@@ -84,107 +107,128 @@ struct PersonalWorkspaceView: View {
                         
                     }
                 }
-            }// HStack
-            HStack {
-                let miniatureNamesList: [String] = ["postItMiniature", "notesMiniature", "imageMiniature", "videoEmbedMiniature", "webLinkMiniature"]
-                
-                Text("Add Stuff:")
-                    .padding(.horizontal, 10)
-                ForEach(miniatureNamesList, id: \.self) { miniatureName in
-                    Button(action: {
-                        switch miniatureName {
-                        case "postItMiniature":
-                            workspaceElementList.append(
-                              WorkspaceElement(
-                                  date: Date(),
-                                  position: CGPoint(x: 100, y: 100),
-                                  type: .postIt)
-                            )
-                        case "notesMiniature":
-                            workspaceElementList.append(
-                              WorkspaceElement(
-                                  date: Date(),
-                                  position: CGPoint(x: 100, y: 100),
-                                  type: .note)
-                            )
-                        case "videoEmbedMiniature":
-                            workspaceElementList.append(
-                              WorkspaceElement(
-                                  date: Date(),
-                                  position: CGPoint(x: 400, y: 400),
-                                  type: .video)
-                            )
-                        case "imageMiniature":
-                            workspaceElementList.append(
-                              WorkspaceElement(
-                                  date: Date(),
-                                  position: CGPoint(x: 400, y: 400),
-                                  type: .image)
-                            )
-                        case "webLinkMiniature":
-                            workspaceElementList.append(
-                              WorkspaceElement(
-                                  date: Date(),
-                                  position: CGPoint(x: 400, y: 400),
-                                  type: .webLink)
-                            )
-                        default:
-                          print("Default case on toolbar switch")
-                        }
-                        saveScreen(workspaceElementeListUpdated: workspaceElementList)
-                        reloadScreen()
-                    }) {
-                        switch miniatureName {
-                        case "videoEmbedMiniature":
-                            Image(systemName: "play.rectangle.fill")
-                                .font(.system(size: 20).bold())
-                                .padding(.trailing, 10)
-                        case "imageMiniature":
-                            Image(systemName: "photo.fill")
-                                .font(.system(size: 20).bold())
-                                .padding(.trailing, 10)
-                        case "webLinkMiniature":
-                            Image(systemName: "link")
-                                .font(.system(size: 20).bold())
-                                .padding(.trailing, 10)
-                        default:
-                            Image(miniatureName)
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(height: 30)
-                                .padding(.horizontal, 10)
-                                .padding(.vertical, 5)
-                        }
-                            
-                    }.buttonStyle(PlainButtonStyle()) // Button
-                }// ForEach
-            } // HStack
-            .background(Color("black"))
-            .cornerRadius(8)
-            .padding(.horizontal, 50)
-            .padding(.bottom, 15)
-        } // VStack
-            RightSideItems(type: .workspace) { mockup in
-                switch mockup {
-                case "imageSample":
-                    workspaceElementList.append(
-                        WorkspaceElement(date: Date(),
-                                         position: CGPoint(x: 50, y: 50),
-                                         text: "imageSample",
-                                         type: .image
-                        )
-                    )
-                case "postitSample":
-                    workspaceElementList.append(
-                        WorkspaceElement(date: Date(),
-                                         position: CGPoint(x: 50, y: 50),
-                                         text: "Mockup de post it compartilhado",
-                                         type: .postIt
-                        )
-                    )
-                default:
-                    print(mockup + " not recognizable as shared material type")
+            } else {
+                HStack{
+                    VStack(alignment:.leading){
+                        Text("Nothing here...")
+                            .font(.title)
+                            .bold()
+                        Text("No more drama llama, start \nby adding some components")
+                            .font(.body)
+                    }
+                    Image("emptyWorkspaceLhama")
                 }
+                
+                
+            }
+            
+            VStack {
+                Spacer()
+                HStack {
+                    let miniatureNamesList: [String] = ["postItMiniature", "notesMiniature", "imageMiniature", "videoEmbedMiniature", "webLinkMiniature"]
+                    
+                    Text("Add Stuff:")
+                        .padding(.horizontal, 10)
+                    ForEach(miniatureNamesList, id: \.self) { miniatureName in
+                        Button(action: {
+                            switch miniatureName {
+                            case "postItMiniature":
+                                workspaceElementList.append(
+                                  WorkspaceElement(
+                                      date: Date(),
+                                      position: CGPoint(x: 100, y: 100),
+                                      type: .postIt)
+                                )
+                            case "notesMiniature":
+                                workspaceElementList.append(
+                                  WorkspaceElement(
+                                      date: Date(),
+                                      position: CGPoint(x: 100, y: 100),
+                                      type: .note)
+                                )
+                            case "videoEmbedMiniature":
+                                workspaceElementList.append(
+                                  WorkspaceElement(
+                                      date: Date(),
+                                      position: CGPoint(x: 400, y: 400),
+                                      type: .video)
+                                )
+                            case "imageMiniature":
+                                workspaceElementList.append(
+                                  WorkspaceElement(
+                                      date: Date(),
+                                      position: CGPoint(x: 400, y: 400),
+                                      type: .image)
+                                )
+                            case "webLinkMiniature":
+                                workspaceElementList.append(
+                                  WorkspaceElement(
+                                      date: Date(),
+                                      position: CGPoint(x: 400, y: 400),
+                                      type: .webLink)
+                                )
+                            default:
+                              print("Default case on toolbar switch")
+                            }
+                            saveScreen(workspaceElementeListUpdated: workspaceElementList)
+                            reloadScreen()
+                        }) {
+                            switch miniatureName {
+                            case "videoEmbedMiniature":
+                                Image(systemName: "play.rectangle.fill")
+                                    .font(.system(size: 20).bold())
+                                    .padding(.trailing, 10)
+                            case "imageMiniature":
+                                Image(systemName: "photo.fill")
+                                    .font(.system(size: 20).bold())
+                                    .padding(.trailing, 10)
+                            case "webLinkMiniature":
+                                Image(systemName: "link")
+                                    .font(.system(size: 20).bold())
+                                    .padding(.trailing, 10)
+                            default:
+                                Image(miniatureName)
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(height: 30)
+                                    .padding(.horizontal, 10)
+                                    .padding(.vertical, 5)
+                            }
+                                
+                        }.buttonStyle(PlainButtonStyle()) // Button
+                    }// ForEach
+                } // HStack
+                .background(Color("black"))
+                .cornerRadius(8)
+                .padding(.horizontal, 50)
+                .padding(.bottom, 15)
+            }
+            
+            HStack{
+                Spacer()
+                RightSideItems(type: .workspace) { mockup in
+                    switch mockup {
+                    case "imageSample":
+                        workspaceElementList.append(
+                            WorkspaceElement(date: Date(),
+                                             position: CGPoint(x: 50, y: 50),
+                                             text: "imageSample",
+                                             type: .image
+                            )
+                        )
+                    case "postitSample":
+                        workspaceElementList.append(
+                            WorkspaceElement(date: Date(),
+                                             position: CGPoint(x: 50, y: 50),
+                                             text: "Mockup de post it compartilhado",
+                                             type: .postIt
+                            )
+                        )
+                    default:
+                        print(mockup + " not recognizable as shared material type")
+                    }
+                }.padding()
+                .padding()
             }
         }
         .onDisappear {
