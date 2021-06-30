@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ImageView: View {
     @Binding var workspaceElement: WorkspaceElement
+    @State var showMenu = false
     var deleteItem: (UUID) -> Void
     
     var body: some View {
@@ -19,7 +20,7 @@ struct ImageView: View {
             VStack{
                 HStack{
                     Spacer()
-                    if workspaceElement.showMenu {
+                    
                         Menu{
                             Menu {
                                 Button(action: {
@@ -61,18 +62,24 @@ struct ImageView: View {
                                 Label("Delete", systemImage: "trash")
                             }
                         } label: {
-                            Image(systemName: "ellipsis")
-                                .font(.system(size: 15))
+                            if showMenu {
+                                Image(systemName: "ellipsis")
+                                    .font(.system(size: 15))
+                            }
+
                         }
                         .foregroundColor(.black)
                         .menuStyle(BorderlessButtonMenuStyle(showsMenuIndicator: false))
                         .fixedSize()
                         .padding(.top, 28)
                         .padding(.trailing,12)
-                    }
+                    
                 }
                 Spacer()
             }
+        }
+        .onHover { over in
+            showMenu.toggle()
         }
         .frame(width: 150, height: 180)
         .cornerRadius(20)
@@ -86,9 +93,6 @@ struct ImageView: View {
                 }
             })
         )
-        .onHover { over in
-            workspaceElement.showMenu = over
-        }
     }
 }
 

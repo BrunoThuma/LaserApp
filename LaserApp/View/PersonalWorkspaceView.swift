@@ -67,6 +67,8 @@ struct PersonalWorkspaceView: View {
                                     VideoView(workspaceElement: $workspaceElementList[i], deleteItem: deleteElement)
                                 case .webLink:
                                     WebLinkView(workspaceElement: $workspaceElementList[i], deleteItem: deleteElement)
+                                case .image:
+                                    ImageView(workspaceElement: $workspaceElementList[i], deleteItem: deleteElement)
                                 }
                             }
                         }
@@ -84,7 +86,7 @@ struct PersonalWorkspaceView: View {
                 }
             }// HStack
             HStack {
-                let miniatureNamesList: [String] = ["postItMiniature", "notesMiniature", "videoEmbedMiniature", "webLinkMiniature"]
+                let miniatureNamesList: [String] = ["postItMiniature", "notesMiniature", "imageMiniature", "videoEmbedMiniature", "webLinkMiniature"]
                 
                 Text("Add Stuff:")
                     .padding(.horizontal, 10)
