@@ -36,48 +36,39 @@ let kanbanInProgressSampleData = KanbanPartData(title: "Ongoing", items: [
 
 let personalWorkspaceCardSampleData = [
     PersonalWorkspaceCardData(
-        title: "interface - marcus",
+        title: "eletromag aula 1",
         hashtags: [
             HashtagData(title: "video", color: "yellow"),
             HashtagData(title: "podcast", color: "purple"),
             HashtagData(title: "videoaula", color: "yellow"),
-            HashtagData(title: "audio", color: "yellow"),
+            HashtagData(title: "audio", color: "deepPurple"),
+            HashtagData(title: "leia", color: "turquoise"),
         ]
     ),
     PersonalWorkspaceCardData(
-        title: "interface - marcus",
+        title: "design ed - gonzatto",
         hashtags: [
             HashtagData(title: "video", color: "yellow"),
-            HashtagData(title: "podcast", color: "purple"),
             HashtagData(title: "videoaula", color: "yellow"),
-            HashtagData(title: "audio", color: "yellow"),
+            HashtagData(title: "audio", color: "deepPurple"),
+            HashtagData(title: "leia", color: "turquoise"),
         ]
     ),
     PersonalWorkspaceCardData(
-        title: "interface - marcus",
+        title: "interface - marcos",
         hashtags: [
             HashtagData(title: "video", color: "yellow"),
             HashtagData(title: "podcast", color: "purple"),
             HashtagData(title: "videoaula", color: "yellow"),
-            HashtagData(title: "audio", color: "yellow"),
+            HashtagData(title: "audio", color: "deepPurple"),
         ]
     ),
     PersonalWorkspaceCardData(
-        title: "interface - marcus",
+        title: "ux - gonzatto",
         hashtags: [
             HashtagData(title: "video", color: "yellow"),
             HashtagData(title: "podcast", color: "purple"),
-            HashtagData(title: "videoaula", color: "yellow"),
-            HashtagData(title: "audio", color: "yellow"),
-        ]
-    ),
-    PersonalWorkspaceCardData(
-        title: "interface - marcus",
-        hashtags: [
-            HashtagData(title: "video", color: "yellow"),
-            HashtagData(title: "podcast", color: "purple"),
-            HashtagData(title: "videoaula", color: "yellow"),
-            HashtagData(title: "audio", color: "yellow"),
+            HashtagData(title: "leia", color: "turquoise"),
         ]
     ),
 ]

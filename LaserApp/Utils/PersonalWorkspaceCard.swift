@@ -34,7 +34,6 @@ struct PersonalWorkspaceCard: View {
                     HStack {
                         ForEach(data.hashtags) { hashtag in
                             Hashtag(data: hashtag)
-                                .padding(.trailing, 7)
                         }
                         
                         Spacer()
