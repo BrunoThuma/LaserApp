@@ -134,8 +134,6 @@ struct PersonalWorkspaceView: View {
                 HStack {
                     let miniatureNamesList: [String] = ["postItMiniature", "notesMiniature", "imageMiniature", "videoEmbedMiniature", "webLinkMiniature"]
                     
-                    Text("Add Stuff:")
-                        .padding(.horizontal, 10)
                     ForEach(miniatureNamesList, id: \.self) { miniatureName in
                         Button(action: {
                             switch miniatureName {
