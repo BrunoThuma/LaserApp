@@ -31,8 +31,8 @@ struct SharedWithYou: View {
                             }
                         
                         VStack(alignment: .leading) {
-                            Hashtag(data: HashtagData(title: "anota ai", color: "pink"))
-                            Hashtag(data: HashtagData(title: "resumos", color: "pink"))
+                            Hashtag(data: HashtagData(title: "anotation", color: "pink"))
+                            Hashtag(data: HashtagData(title: "summaries", color: "pink"))
                         }
                     }
                 }
@@ -56,8 +56,8 @@ struct SharedWithYou: View {
                             }
                         
                         VStack(alignment: .leading) {
-                            Hashtag(data: HashtagData(title: "veja", color: "turquoise"))
-                            Hashtag(data: HashtagData(title: "infograficos", color: "turquoise"))
+                            Hashtag(data: HashtagData(title: "see", color: "turquoise"))
+                            Hashtag(data: HashtagData(title: "infographic", color: "turquoise"))
                         }
                     }
                 }

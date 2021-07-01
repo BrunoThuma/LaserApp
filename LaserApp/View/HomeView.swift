@@ -9,66 +9,55 @@
 import SwiftUI
 
 let kanbanBacklogSampleData = KanbanPartData(title: "Backlog", items: [
-    KanbanItemData(name: "Design tela Home", description: "Fazer o design da tela Home com todos os componentes criados no Figma, incluir ações de interação com o protótipo. Estar em conformidade com a paleta de cores."),
-    KanbanItemData(name: "Simulação analógica", description: "Simular o circuito X"),
-    KanbanItemData(name: "Simulação analógica", description: "Simular o circuito X"),
-    KanbanItemData(name: "Simulação analógica", description: "Simular o circuito X"),
+    KanbanItemData(name: "Home screen design", description: "Make Home screen design with all Figma components, include interaction with the prototype. Make all conform to the color pallete."),
+    KanbanItemData(name: "Markdown conversion", description: "Convert Markdown format."),
+    KanbanItemData(name: "Table View", description: ""),
 ]);
 
 let kanbanTodoSampleData = KanbanPartData(title: "To do", items: [
-    KanbanItemData(name: "Simulação analógica", description: "Simular o circuito X"),
-    KanbanItemData(name: "Simulação analógica", description: "Simular o circuito X"),
-    KanbanItemData(name: "Simulação analógica", description: "Simular o circuito X"),
-    KanbanItemData(name: "Simulação analógica", description: "Simular o circuito X"),
+    KanbanItemData(name: "Audio recording in note", description: "Show audio in note and playback UI."),
+    KanbanItemData(name: "Bookmark in note", description: "Show rich link UI in a note, and feature to render website screenshot."),
+    KanbanItemData(name: "Analogic Simulation", description: "Simulate an amplification circuit."),
 ]);
 
 let kanbanInProgressSampleData = KanbanPartData(title: "Ongoing", items: [
-    KanbanItemData(name: "Simulação analógica", description: "Simular o circuito X"),
-    KanbanItemData(name: "Simulação analógica", description: "Simular o circuito X"),
-    KanbanItemData(name: "Simulação analógica", description: "Simular o circuito X"),
-    KanbanItemData(name: "Simulação analógica", description: "Simular o circuito X"),
-    KanbanItemData(name: "Simulação analógica", description: "Simular o circuito X"),
-    KanbanItemData(name: "Simulação analógica", description: "Simular o circuito X"),
-    KanbanItemData(name: "Simulação analógica", description: "Simular o circuito X"),
-    KanbanItemData(name: "Simulação analógica", description: "Simular o circuito X"),
-    KanbanItemData(name: "Simulação analógica", description: "Simular o circuito X"),
+    KanbanItemData(name: "Mobile view", description: "Functions for both web responsive and native apps. Note: iOs will need unique share icons."),
+    KanbanItemData(name: "Desktop view", description: "PWA for website and native apps. Note: Mac will need unique share icons."),
 ]);
 
 let personalWorkspaceCardSampleData = [
     PersonalWorkspaceCardData(
-        title: "eletromag aula 1",
+        title: "eletromag 1",
         hashtags: [
             HashtagData(title: "video", color: "yellow"),
             HashtagData(title: "podcast", color: "purple"),
-            HashtagData(title: "videoaula", color: "yellow"),
             HashtagData(title: "audio", color: "deepPurple"),
-            HashtagData(title: "leia", color: "turquoise"),
+            HashtagData(title: "read", color: "turquoise"),
         ]
     ),
     PersonalWorkspaceCardData(
-        title: "design ed - gonzatto",
+        title: "ed design",
         hashtags: [
             HashtagData(title: "video", color: "yellow"),
-            HashtagData(title: "videoaula", color: "yellow"),
             HashtagData(title: "audio", color: "deepPurple"),
-            HashtagData(title: "leia", color: "turquoise"),
+            HashtagData(title: "read", color: "turquoise"),
         ]
     ),
     PersonalWorkspaceCardData(
-        title: "interface - marcos",
+        title: "interfaces",
         hashtags: [
             HashtagData(title: "video", color: "yellow"),
             HashtagData(title: "podcast", color: "purple"),
-            HashtagData(title: "videoaula", color: "yellow"),
+            HashtagData(title: "movie", color: "yellow"),
             HashtagData(title: "audio", color: "deepPurple"),
         ]
     ),
     PersonalWorkspaceCardData(
-        title: "ux - gonzatto",
+        title: "ux",
         hashtags: [
             HashtagData(title: "video", color: "yellow"),
             HashtagData(title: "podcast", color: "purple"),
-            HashtagData(title: "leia", color: "turquoise"),
+            HashtagData(title: "read", color: "turquoise"),
         ]
     ),
 ]
@@ -141,19 +130,19 @@ struct HomeView: View {
                                     Label("UX Design", systemImage: "globe")
                                 }
                                 Button(action: {
-                                    addPersonalWorkspace(PersonalWorkspace(name: "Design Editorial"))
+                                    addPersonalWorkspace(PersonalWorkspace(name: "Editorial Design"))
                                 }) {
-                                    Label("Design Editorial", systemImage: "globe")
+                                    Label("Editorial Design", systemImage: "globe")
                                 }
                                 Button(action: {
-                                    addPersonalWorkspace(PersonalWorkspace(name: "Design de Interfaces"))
+                                    addPersonalWorkspace(PersonalWorkspace(name: "Interface Design"))
                                 }) {
-                                    Label("Design de Interfaces", systemImage: "globe")
+                                    Label("Interface Design", systemImage: "globe")
                                 }
                                 Button(action: {
-                                    addPersonalWorkspace(PersonalWorkspace(name: "Leitura e Escrita Acadêmica"))
+                                    addPersonalWorkspace(PersonalWorkspace(name: "Academic Read and Write"))
                                 }) {
-                                    Label("Leitura e Escrita Acadêmica", systemImage: "globe")
+                                    Label("Academic Read and Write", systemImage: "globe")
                                 }
                             } label: {
                                 Label("Duplicate from", systemImage: "square.and.arrow.up")

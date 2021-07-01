@@ -74,22 +74,22 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView(
-            personalWorkspaces: [
-                PersonalWorkspace(name: "eletromag aula 1"),
-                PersonalWorkspace(name: "design ed - gonzatto"),
-                PersonalWorkspace(name: "interfaces - marcos"),
-                PersonalWorkspace(name: "ux - gonzatto"),
-            ],
-            sharedWorkspaces: [
-                SharedWorkspace(name: "Eletromagnetismo"),
-                SharedWorkspace(name: "Design Editorial"),
-                SharedWorkspace(name: "Design de Interface"),
-                SharedWorkspace(name: "Leitura e Escrita"),
-                SharedWorkspace(name: "Redes de Computadores"),
-            ]
-        ) // Exemplo de Workspaces
-    }
-}
+//struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ContentView(
+//            personalWorkspaces: [
+//                PersonalWorkspace(name: "eletromag aula 1"),
+//                PersonalWorkspace(name: "design ed - gonzatto"),
+//                PersonalWorkspace(name: "interfaces - marcos"),
+//                PersonalWorkspace(name: "ux - gonzatto"),
+//            ],
+//            sharedWorkspaces: [
+//                SharedWorkspace(name: "Eletromagnetismo"),
+//                SharedWorkspace(name: "Design Editorial"),
+//                SharedWorkspace(name: "Design de Interface"),
+//                SharedWorkspace(name: "Leitura e Escrita"),
+//                SharedWorkspace(name: "Redes de Computadores"),
+//            ]
+//        ) // Exemplo de Workspaces
+//    }
+//}

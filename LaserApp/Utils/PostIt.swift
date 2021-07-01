@@ -46,17 +46,17 @@ struct PostItView: View {
                                 Button(action: {
                                     
                                 }) {
-                                    Label("Design Editorial", systemImage: "globe")
+                                    Label("Editorial Design", systemImage: "globe")
                                 }
                                 Button(action: {
                                     
                                 }) {
-                                    Label("Design de Interfaces", systemImage: "globe")
+                                    Label("Interface Design", systemImage: "globe")
                                 }
                                 Button(action: {
                                     
                                 }) {
-                                    Label("Leitura e Escrita Acadêmica", systemImage: "globe")
+                                    Label("Academic Read and Write", systemImage: "globe")
                                 }
                             }label : {
                                 Label("Share", systemImage: "square.and.arrow.up")

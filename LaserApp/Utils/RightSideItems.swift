@@ -9,30 +9,30 @@ import SwiftUI
 
 let hashtagsSampleData = [
     HashtagData(title: "video", color: "yellow"),
-    HashtagData(title: "escute", color: "purple"),
-    HashtagData(title: "videoaula", color: "yellow"),
-    HashtagData(title: "pratique", color: "deepPurple"),
+    HashtagData(title: "listen", color: "purple"),
+    HashtagData(title: "recorded", color: "yellow"),
+    HashtagData(title: "practice", color: "deepPurple"),
     HashtagData(title: "audio", color: "yellow"),
     HashtagData(title: "podcast", color: "purple"),
-    HashtagData(title: "leia", color: "turquoise"),
+    HashtagData(title: "read", color: "turquoise"),
 ]
 
 let sectionsSampleData = [
-    PersonalGoalsSectionData(title: "Entregas Sustentabilidade", items: [
-        PersonalGoalsSectionItemData(name: "Relatório"),
-        PersonalGoalsSectionItemData(name: "Entrevistas"),
-        PersonalGoalsSectionItemData(name: "Entrega mapa mental"),
+    PersonalGoalsSectionData(title: "Sustainability", items: [
+        PersonalGoalsSectionItemData(name: "Report"),
+        PersonalGoalsSectionItemData(name: "Interviews"),
+        PersonalGoalsSectionItemData(name: "Mind map"),
     ]),
-    PersonalGoalsSectionData(title: "TDE 02 / UX", items: [
-        PersonalGoalsSectionItemData(name: "Analise"),
-        PersonalGoalsSectionItemData(name: "Relatório"),
+    PersonalGoalsSectionData(title: "UX", items: [
+        PersonalGoalsSectionItemData(name: "Analysis"),
+        PersonalGoalsSectionItemData(name: "Report"),
     ]),
-    PersonalGoalsSectionData(title: "30 min meditação", items: [
-        PersonalGoalsSectionItemData(name: "Segunda"),
-        PersonalGoalsSectionItemData(name: "Terça"),
-        PersonalGoalsSectionItemData(name: "Quarta"),
-        PersonalGoalsSectionItemData(name: "Quinta"),
-        PersonalGoalsSectionItemData(name: "Sexta"),
+    PersonalGoalsSectionData(title: "30 min meditation", items: [
+        PersonalGoalsSectionItemData(name: "Monday"),
+        PersonalGoalsSectionItemData(name: "Tuesday"),
+        PersonalGoalsSectionItemData(name: "Wednesday"),
+        PersonalGoalsSectionItemData(name: "Thursday"),
+        PersonalGoalsSectionItemData(name: "Friday"),
     ]),
 ]
 

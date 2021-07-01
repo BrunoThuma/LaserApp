@@ -13,16 +13,16 @@ struct LaserAppApp: App {
         WindowGroup {
             ContentView(
                 personalWorkspaces: [
-                    PersonalWorkspace(name: "eletromag aula 1"),
-                    PersonalWorkspace(name: "design ed - gonzatto"),
-                    PersonalWorkspace(name: "interfaces - marcos"),
-                    PersonalWorkspace(name: "ux - gonzatto"),
+                    PersonalWorkspace(name: "eletromag 1"),
+                    PersonalWorkspace(name: "ed design"),
+                    PersonalWorkspace(name: "interfaces"),
+                    PersonalWorkspace(name: "ux"),
                 ],
                 sharedWorkspaces: [
                     SharedWorkspace(name: "UX Design"),
-                    SharedWorkspace(name: "Design Editorial"),
-                    SharedWorkspace(name: "Design de Interface"),
-                    SharedWorkspace(name: "Leitura e Escrita Acadêmica"),
+                    SharedWorkspace(name: "Editorial Design"),
+                    SharedWorkspace(name: "Interface Design"),
+                    SharedWorkspace(name: "Academic Read and Write"),
                 ]
             ) // Exemplo de Workspaces
         }
