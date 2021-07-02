@@ -216,7 +216,7 @@ struct PersonalWorkspaceView: View {
                     case "imageSample":
                         workspaceElementList.append(
                             WorkspaceElement(date: Date(),
-                                             position: CGPoint(x: 50, y: 50),
+                                             position: CGPoint(x: 700, y: 700),
                                              text: "imageSample",
                                              type: .image
                             )
@@ -224,7 +224,7 @@ struct PersonalWorkspaceView: View {
                     case "postitSample":
                         workspaceElementList.append(
                             WorkspaceElement(date: Date(),
-                                             position: CGPoint(x: 50, y: 50),
+                                             position: CGPoint(x: 700, y: 600),
                                              text: "Ler texto 'User Experience and Experience Design', Marc Hassenahl",
                                              type: .postIt
                             )

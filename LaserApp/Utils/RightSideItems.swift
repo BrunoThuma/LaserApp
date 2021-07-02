@@ -18,10 +18,10 @@ let hashtagsSampleData = [
 ]
 
 let sectionsSampleData = [
-    PersonalGoalsSectionData(title: "Sustainability", items: [
-        PersonalGoalsSectionItemData(name: "Report"),
-        PersonalGoalsSectionItemData(name: "Interviews"),
-        PersonalGoalsSectionItemData(name: "Mind map"),
+    PersonalGoalsSectionData(title: "Laser App Video", items: [
+        PersonalGoalsSectionItemData(name: "Awesome song"),
+        PersonalGoalsSectionItemData(name: "Interactions"),
+        PersonalGoalsSectionItemData(name: "Rock it"),
     ]),
     PersonalGoalsSectionData(title: "UX", items: [
         PersonalGoalsSectionItemData(name: "Analysis"),
