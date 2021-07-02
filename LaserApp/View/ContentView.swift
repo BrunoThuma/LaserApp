@@ -16,7 +16,7 @@ struct ContentView: View {
     }
     
     func addPersonalWorkspace(newWorkspace: PersonalWorkspace) {
-        personalWorkspaces.append(newWorkspace)
+        personalWorkspaces.insert(newWorkspace, at: 0)
     }
     
     func changeTitle(_ newTitle: String, _ id: UUID) {

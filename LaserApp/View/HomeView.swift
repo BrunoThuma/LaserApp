@@ -70,6 +70,8 @@ struct HomeView: View {
     
     var addPersonalWorkspace: (PersonalWorkspace) -> Void = {_ in ()}
     
+    @State var personalWorkspaceCardData = personalWorkspaceCardSampleData
+    
     struct Header: View {
         @Binding var searchText: String
         @Binding var searchTag: String
@@ -106,7 +108,7 @@ struct HomeView: View {
     }
     
     struct PersonalWorkspaceSection: View {
-        var data: [PersonalWorkspaceCardData]
+        @State var data: [PersonalWorkspaceCardData]
         
         @State var menuIsOnHover = false
         
@@ -151,11 +153,12 @@ struct HomeView: View {
                             .fixedSize()
                             
                             Button(action: {
-                                addPersonalWorkspace(PersonalWorkspace(name: "New Workspace"))
+                                let newWorkspace = PersonalWorkspace(name: "New Workspace")
+                                data.insert(PersonalWorkspaceCardData(title: newWorkspace.name, hashtags: []), at: 0)
+                                addPersonalWorkspace(newWorkspace)
                             }, label: {
                                 Label("Create new workspace", systemImage: "globe")
                             })
-                            
                         } label: {
                             Text(menuIsOnHover ? "􀁍" : "􀁌")
                                 .font(.system(size: 28, weight: .regular))
@@ -173,7 +176,7 @@ struct HomeView: View {
                 }
                 
                 LazyVGrid(columns: columns, alignment: .leading, spacing: 30) {
-                    ForEach(personalWorkspaceCardSampleData) { item in
+                    ForEach(data) { item in
                         PersonalWorkspaceCard(data: item) {
                             print("workspace clicked")
                         }
@@ -189,7 +192,7 @@ struct HomeView: View {
         ScrollView {
             HStack(alignment: .top) {
                 VStack(alignment: .leading) {
-                    Header(searchText: $searchText, searchTag: $searchTag, tagOptions: ["veja", "escute", "anote", "pratique"])
+                    Header(searchText: $searchText, searchTag: $searchTag, tagOptions: ["see", "listen", "write", "practice"])
                         .offset(x: 0, y: 0)
                      
                     DashboardSection(backlogData: kanbanBacklogSampleData, todoData: kanbanTodoSampleData, inProgressData: kanbanInProgressSampleData)
